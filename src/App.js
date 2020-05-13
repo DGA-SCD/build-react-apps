@@ -7,6 +7,8 @@ import { TaskCreator } from './TaskCreator'
 import { TaskList } from './TaskList'
 import './App.css'
 
+const apiServerUrl = 'http://localhost:8000'
+
 class App extends React.Component {
   state = {
     task: '',
@@ -18,7 +20,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:8000/tasks').then((response) => {
+    axios.get(`${apiServerUrl}/tasks`).then((response) => {
       const tasksFromAPI = response.data
       const allTasks = tasksFromAPI.map((task) => {
         return {
@@ -65,7 +67,7 @@ class App extends React.Component {
       this.setState({ allTasks: newAllTasks })
       this.setState({ endedAt: currentDateTime })
 
-      axios.post('http://localhost:8000/tasks', {
+      axios.post(`${apiServerUrl}/tasks`, {
         name: this.state.task,
         category: this.state.category,
         started_at: this.state.startedAt,
@@ -79,7 +81,7 @@ class App extends React.Component {
     const currentAllTasks = this.state.allTasks
     const newAllTasks = currentAllTasks.filter((task) => task.id !== taskId)
     this.setState({ allTasks: newAllTasks })
-    axios.delete(`http://localhost:8000/tasks/${taskId}`)
+    axios.delete(`${apiServerUrl}/tasks/${taskId}`)
   }
 
   render() {
