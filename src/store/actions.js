@@ -20,7 +20,7 @@ export const addNewTaskAsync = (task) => {
       name: task.name,
       category: task.category,
       started_at: task.startedAt,
-      ended_at: nowUTC(),
+      ended_at: task.endedAt,
       username: window.sessionStorage.getItem('username')
     })
     dispatch(addNewTask(task))
