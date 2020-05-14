@@ -1,24 +1,48 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
 
 import App from './App'
 import Login from './components/Login'
 import * as serviceWorker from './serviceWorker'
 import './index.css'
+import { ADD_NEW_TASK } from './store/actions'
+
+const initialState = {
+  allTasks: []
+}
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_NEW_TASK:
+      return {
+        allTasks: state.allTasks.concat(action.payload)
+      }
+  }
+  return state
+}
+
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Switch>
-        <Route path='/app'>
-          <App />
-        </Route>
-        <Route path='/'>
-          <Login />
-        </Route>
-      </Switch>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path='/app'>
+            <App />
+          </Route>
+          <Route path='/'>
+            <Login />
+          </Route>
+        </Switch>
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 )
