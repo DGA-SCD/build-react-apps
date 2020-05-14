@@ -5,30 +5,11 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
+import './index.css'
 import App from './App'
 import Login from './components/Login'
 import * as serviceWorker from './serviceWorker'
-import './index.css'
-import { ADD_NEW_TASK, FETCH_TASKS_SUCCESS } from './store/actions'
-
-const initialState = {
-  allTasks: []
-}
-
-const reducer = (state = initialState, action) => {
-  console.log(action)
-  switch (action.type) {
-    case ADD_NEW_TASK:
-      return {
-        allTasks: state.allTasks.concat(action.payload)
-      }
-    case FETCH_TASKS_SUCCESS:
-      return {
-        allTasks: [...action.payload]
-      }
-  }
-  return state
-}
+import { reducer } from './store/reducers'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)))

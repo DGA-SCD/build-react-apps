@@ -1,13 +1,10 @@
 import axios from 'axios'
 
-import { nowUTC } from '../utils'
+import { ADD_NEW_TASK, DELETE_TASK, FETCH_TASKS_SUCCESS } from './types'
 
 const apiServerUrl = 'http://localhost:8000'
 
-export const ADD_NEW_TASK = 'ADD_NEW_TASK'
-export const FETCH_TASKS_SUCCESS = 'FETCH_TASKS_SUCCESS'
-
-export const addNewTask = (task) => {
+const addNewTask = (task) => {
   return {
     type: ADD_NEW_TASK,
     payload: task
@@ -48,5 +45,19 @@ export const fetchTasks = () => {
       })
       dispatch(fetchTasksSuccess(allTasks))
     })
+  }
+}
+
+const deleteTask = (id) => {
+  return {
+    type: DELETE_TASK,
+    payload: id
+  }
+}
+
+export const deleteTaskAsync = (id) => {
+  return (dispatch) => {
+    axios.delete(`${apiServerUrl}/tasks/${id}`)
+    dispatch(deleteTask(id))
   }
 }

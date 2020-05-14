@@ -7,7 +7,7 @@ import { NavBar } from './components/NavBar'
 import { NoTask } from './components/NoTask'
 import { TaskCreator } from './components/TaskCreator'
 import { TaskList } from './components/TaskList'
-import { addNewTaskAsync, fetchTasks } from './store/actions'
+import { addNewTaskAsync, deleteTaskAsync, fetchTasks } from './store/actions'
 
 class App extends React.Component {
   state = {
@@ -51,10 +51,7 @@ class App extends React.Component {
   }
 
   onRemoveClicked = (taskId) => {
-    const currentAllTasks = this.props.allTasks
-    const newAllTasks = currentAllTasks.filter((task) => task.id !== taskId)
-    // this.setState({ allTasks: newAllTasks })
-    // axios.delete(`${apiServerUrl}/tasks/${taskId}`)
+    this.props.deleteTaskAsync(taskId)
   }
 
   render() {
@@ -88,6 +85,7 @@ const mapStateToProps = (state) => {
 
 const mapDisptachToProps = {
   addNewTaskAsync,
+  deleteTaskAsync,
   fetchTasks
 }
 
