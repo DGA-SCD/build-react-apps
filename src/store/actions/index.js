@@ -1,15 +1,9 @@
+import { createAction } from '@reduxjs/toolkit'
 import axios from 'axios'
-
-import { ADD_NEW_TASK, DELETE_TASK, FETCH_TASKS_SUCCESS } from './types'
 
 const apiServerUrl = 'http://localhost:8000'
 
-const addNewTask = (task) => {
-  return {
-    type: ADD_NEW_TASK,
-    payload: task
-  }
-}
+export const addNewTask = createAction('ADD_NEW_TASK')
 
 export const addNewTaskAsync = (task) => {
   return (dispatch) => {
@@ -24,10 +18,7 @@ export const addNewTaskAsync = (task) => {
   }
 }
 
-const fetchTasksSuccess = (allTasks) => ({
-  type: FETCH_TASKS_SUCCESS,
-  payload: allTasks
-})
+export const fetchTasksSuccess = createAction('FETCH_TASKS_SUCCESS')
 
 export const fetchTasks = () => {
   return (dispatch) => {
@@ -48,12 +39,7 @@ export const fetchTasks = () => {
   }
 }
 
-const deleteTask = (id) => {
-  return {
-    type: DELETE_TASK,
-    payload: id
-  }
-}
+export const deleteTask = createAction('DELETE_TASK')
 
 export const deleteTaskAsync = (id) => {
   return (dispatch) => {

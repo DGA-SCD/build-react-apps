@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import { createStore, applyMiddleware, compose } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
@@ -11,8 +11,10 @@ import Login from './components/Login'
 import * as serviceWorker from './serviceWorker'
 import { reducer } from './store/reducers'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)))
+const store = configureStore({
+  reducer,
+  middleware: [thunk]
+})
 
 ReactDOM.render(
   <React.StrictMode>
