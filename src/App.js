@@ -8,9 +8,7 @@ import { NoTask } from './components/NoTask'
 import { TaskCreator } from './components/TaskCreator'
 import { TaskList } from './components/TaskList'
 import './App.css'
-import { addNewTask } from './store/actions'
-
-const apiServerUrl = 'http://localhost:8000'
+import { addNewTask, fetchTasks } from './store/actions'
 
 class App extends React.Component {
   state = {
@@ -22,20 +20,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // axios.get(`${apiServerUrl}/tasks`).then((response) => {
-    //   const tasksFromAPI = response.data
-    //   const allTasks = tasksFromAPI.map((task) => {
-    //     return {
-    //       id: task.id,
-    //       name: task.name,
-    //       category: task.category,
-    //       username: task.username,
-    //       startedAt: task.started_at,
-    //       endedAt: task.ended_at
-    //     }
-    //   })
-    //   this.setState({ allTasks: allTasks })
-    // })
+    this.props.fetchTasks()
   }
 
   onTaskChange = (event) => {
@@ -86,6 +71,7 @@ class App extends React.Component {
   }
 
   render() {
+    const allTasks = this.props.allTasks || []
     return (
       <div className='App'>
         <NavBar />
@@ -98,10 +84,10 @@ class App extends React.Component {
             onAddClicked={this.onAddClicked}
             isStarted={this.state.isStarted}
           />
-          {this.props.allTasks.length < 1 ? (
+          {allTasks < 1 ? (
             <NoTask />
           ) : (
-            <TaskList allTasks={this.props.allTasks} onRemoveClicked={this.onRemoveClicked} />
+            <TaskList allTasks={allTasks} onRemoveClicked={this.onRemoveClicked} />
           )}
         </div>
       </div>
@@ -114,7 +100,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDisptachToProps = {
-  addNewTask
+  addNewTask,
+  fetchTasks
 }
 
 export default connect(mapStateToProps, mapDisptachToProps)(App)
