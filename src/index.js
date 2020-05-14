@@ -9,7 +9,7 @@ import App from './App'
 import Login from './components/Login'
 import * as serviceWorker from './serviceWorker'
 import './index.css'
-import { ADD_NEW_TASK } from './store/actions'
+import { ADD_NEW_TASK, FETCH_TASKS_SUCCESS } from './store/actions'
 
 const initialState = {
   allTasks: []
@@ -22,7 +22,7 @@ const reducer = (state = initialState, action) => {
       return {
         allTasks: state.allTasks.concat(action.payload)
       }
-    case 'FETCH_TASKS_SUCCESS':
+    case FETCH_TASKS_SUCCESS:
       return {
         allTasks: [...action.payload]
       }

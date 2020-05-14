@@ -1,14 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import axios from 'axios'
 
+import './App.css'
 import { nowUTC } from './utils'
 import { NavBar } from './components/NavBar'
 import { NoTask } from './components/NoTask'
 import { TaskCreator } from './components/TaskCreator'
 import { TaskList } from './components/TaskList'
-import './App.css'
-import { addNewTask, fetchTasks } from './store/actions'
+import { addNewTaskAsync, fetchTasks } from './store/actions'
 
 class App extends React.Component {
   state = {
@@ -47,19 +46,7 @@ class App extends React.Component {
     if (isStarted === true) {
       this.setState({ startedAt: currentDateTime })
     } else {
-      // const newAllTasks = this.state.allTasks.concat(newTask)
-      // this.setState({ allTasks: newAllTasks })
-      this.setState({ endedAt: currentDateTime })
-
-      this.props.addNewTask(newTask)
-
-      // axios.post(`${apiServerUrl}/tasks`, {
-      //   name: this.state.task,
-      //   category: this.state.category,
-      //   started_at: this.state.startedAt,
-      //   ended_at: currentDateTime,
-      //   username: window.sessionStorage.getItem('username')
-      // })
+      this.props.addNewTaskAsync(newTask)
     }
   }
 
@@ -100,7 +87,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDisptachToProps = {
-  addNewTask,
+  addNewTaskAsync,
   fetchTasks
 }
 
