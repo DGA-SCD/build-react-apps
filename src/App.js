@@ -1,10 +1,11 @@
 import React from 'react'
 import axios from 'axios'
+
 import { nowUTC } from './utils'
-import { NavBar } from './NavBar'
-import { NoTask } from './NoTask'
-import { TaskCreator } from './TaskCreator'
-import { TaskList } from './TaskList'
+import { NavBar } from './components/NavBar'
+import { NoTask } from './components/NoTask'
+import { TaskCreator } from './components/TaskCreator'
+import { TaskList } from './components/TaskList'
 import './App.css'
 
 const apiServerUrl = 'http://localhost:8000'

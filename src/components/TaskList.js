@@ -1,5 +1,6 @@
 import React from 'react'
-import { convertUTCtoLocal } from './utils'
+
+import { convertUTCtoLocal } from '../utils'
 
 export const TaskList = (props) => {
   return (
