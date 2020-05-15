@@ -18,24 +18,28 @@ export const addNewTaskAsync = (task) => {
   }
 }
 
+export const fetchTasksPending = createAction('FETCH_TASKS_PENDING')
 export const fetchTasksSuccess = createAction('FETCH_TASKS_SUCCESS')
 
 export const fetchTasks = () => {
-  return (dispatch) => {
-    axios.get(`${apiServerUrl}/tasks`).then((response) => {
-      const tasksFromAPI = response.data
-      const allTasks = tasksFromAPI.map((task) => {
-        return {
-          id: task.id,
-          name: task.name,
-          category: task.category,
-          username: task.username,
-          startedAt: task.started_at,
-          endedAt: task.ended_at
-        }
+  return (dispatch, getState) => {
+    dispatch(fetchTasksPending())
+    setTimeout(() => {
+      axios.get(`${apiServerUrl}/tasks`).then((response) => {
+        const tasksFromAPI = response.data
+        const allTasks = tasksFromAPI.map((task) => {
+          return {
+            id: task.id,
+            name: task.name,
+            category: task.category,
+            username: task.username,
+            startedAt: task.started_at,
+            endedAt: task.ended_at
+          }
+        })
+        dispatch(fetchTasksSuccess(allTasks))
       })
-      dispatch(fetchTasksSuccess(allTasks))
-    })
+    }, 1000)
   }
 }
 

@@ -56,6 +56,12 @@ class App extends React.Component {
 
   render() {
     const allTasks = this.props.allTasks || []
+
+    console.log('loading:', this.props.loading)
+    if (this.props.loading) {
+      return <div>Loading...</div>
+    }
+
     return (
       <div className='App'>
         <NavBar />
