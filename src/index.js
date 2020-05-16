@@ -5,7 +5,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
-import { Main } from './components/templates/Main'
+import { Main } from './components/pages/Main'
 import { Categories } from './components/pages/Categories'
 import * as serviceWorker from './serviceWorker'
 import { reducer } from './store/reducers'
