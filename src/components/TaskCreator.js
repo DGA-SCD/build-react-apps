@@ -29,15 +29,9 @@ export const TaskCreator = (props) => {
         </select>
       </div>
       <div className='col'>
-        {props.isStarted === true ? (
-          <button type='button' className='btn btn-danger btn-lg' onClick={props.onAddClicked}>
-            Stop
-          </button>
-        ) : (
-          <button type='button' className='btn btn-success btn-lg' onClick={props.onAddClicked}>
-            Start
-          </button>
-        )}
+        <button type='button' className='btn btn-success btn-lg' onClick={props.onAddClicked}>
+          Add
+        </button>
       </div>
     </div>
   )

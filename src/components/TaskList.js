@@ -1,35 +1,43 @@
 import React from 'react'
 
-import { convertUTCtoLocal } from '../utils'
-
 export const TaskList = (props) => {
   return (
-    <div className='my-3 bg-white rounded shadow-sm'>
-      <div>
-        {props.allTasks.map((task) => {
-          const startedLocalDateTime = convertUTCtoLocal(task.startedAt)
-          const endedLocalDateTime = convertUTCtoLocal(task.endedAt)
-          return (
-            <div
-              className='row m-2 py-2 border-bottom border-gray align-items-center d-flex justify-content-between'
-              key={task.id}
-            >
-              <div className='col'>
-                <span>{task.name}</span>
-                <span className='ml-2 badge badge-info'>{task.category}</span>
-              </div>
-              <div className='col'>{task.username}</div>
-              <div className='col'>{startedLocalDateTime.date}</div>
-              <div className='col'>{`${startedLocalDateTime.time} - ${endedLocalDateTime.time}`}</div>
-              <div className=''>
-                <button className='btn btn-danger' onClick={() => props.onRemoveClicked(task.id)}>
-                  Remove
-                </button>
+    <div className='row'>
+      {props.allTasks.map((task) => {
+        return (
+          <div className='col-md-6 col-sm-12'>
+            <div className='card mb-4 shadow-sm'>
+              <svg
+                className='bd-placeholder-img card-img-top'
+                width='100%'
+                height='225'
+                xmlns='http://www.w3.org/2000/svg'
+                preserveAspectRatio='xMidYMid slice'
+                focusable='false'
+                role='img'
+                aria-label='Placeholder: Thumbnail'
+              >
+                <title>Placeholder</title>
+                <rect width='100%' height='100%' fill='#55595c'></rect>
+                <text x='50%' y='50%' fill='#eceeef' dy='.3em'>
+                  Thumbnail
+                </text>
+              </svg>
+              <div className='card-body'>
+                <p className='card-text'>
+                  This is a wider card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.
+                </p>
+                <div className='d-flex justify-content-end'>
+                  <h4>
+                    <span className='badge badge-info'>Workout</span>
+                  </h4>
+                </div>
               </div>
             </div>
-          )
-        })}
-      </div>
+          </div>
+        )
+      })}
     </div>
   )
 }
