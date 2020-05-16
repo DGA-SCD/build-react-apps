@@ -14,5 +14,5 @@ export const useCategories = () => {
     getCategories()
   }, [])
 
-  return categories
+  return [categories, setCategories]
 }

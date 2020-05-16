@@ -1,7 +1,9 @@
 import React from 'react'
 
-export const CategoryAddButton = () => (
-  <button type='button' class='btn btn-success btn-lg'>
-    Add
-  </button>
-)
+export const CategoryAddButton = ({ onClick }) => {
+  return (
+    <button type='button' class='btn btn-success btn-lg' onClick={onClick}>
+      Add
+    </button>
+  )
+}

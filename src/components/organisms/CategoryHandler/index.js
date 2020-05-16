@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 
 import { CategoryInput } from '../../atoms/CategoryInput'
 import { CategoryAddButton } from '../../atoms/CategoryAddButton'
 import { CategoryList } from '../../molecules/CategoryList'
-import { useCategories } from '../../../hooks/useCategories'
+import { CategoriesContext } from '../../../contexts'
 
 const StyledCategoryList = styled(CategoryList)`
   padding: 0;
@@ -18,7 +17,13 @@ export const CategoryHandler = () => {
     setCategory(event.target.value)
   }
 
-  const categories = useCategories()
+  const { categories, addNewCategoryToContext, removeCategoryFromContext } = useContext(
+    CategoriesContext
+  )
+
+  const onAddClicked = () => {
+    addNewCategoryToContext({ name: category })
+  }
 
   return (
     <div className='container' role='main' style={{ marginTop: '100px' }}>
@@ -27,12 +32,12 @@ export const CategoryHandler = () => {
           <CategoryInput onChange={onCategoryChange} value={category} />
         </div>
         <div className='col'>
-          <CategoryAddButton />
+          <CategoryAddButton onClick={onAddClicked} />
         </div>
       </div>
       <div className='row' style={{ marginTop: '20px' }}>
         <div className='col'>
-          <StyledCategoryList categories={categories} />
+          <StyledCategoryList categories={categories} onRemoveClicked />
         </div>
       </div>
     </div>
