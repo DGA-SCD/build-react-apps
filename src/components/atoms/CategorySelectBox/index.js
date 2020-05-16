@@ -15,7 +15,7 @@ const CategorySelectBox = () => {
       onChange={(e) => this.props.storeCategoryId(e.target.value)}
     >
       {categories.map((category) => (
-        <option key={category.id} value={category.name}>
+        <option key={category.id} value={category.id}>
           {category.name}
         </option>
       ))}
