@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import './App.css'
-import { NavBar } from './components/NavBar'
-import { NoTask } from './components/NoTask'
-import { TaskCreator } from './components/TaskCreator'
-import { TaskList } from './components/TaskList'
+import { NavBar } from './components/atoms/NavBar'
+import { NoTask } from './components/atoms/NoTask'
+import { TaskCreator } from './components/atoms/TaskCreator'
+import { TaskList } from './components/atoms/TaskList'
 import { addNewTaskAsync, deleteTaskAsync, fetchTasks } from './store/actions'
 
 class App extends React.Component {

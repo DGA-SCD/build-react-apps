@@ -7,7 +7,8 @@ import thunk from 'redux-thunk'
 
 import './index.css'
 import App from './App'
-import { Categories } from './pages/Categories'
+// import { Categories } from './components/pages/Categories'
+import { Categories } from './components/templates/Categories'
 import * as serviceWorker from './serviceWorker'
 import { reducer } from './store/reducers'
 
