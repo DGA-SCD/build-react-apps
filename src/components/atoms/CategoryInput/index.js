@@ -1,11 +1,12 @@
 import React from 'react'
 
-export const CategoryInput = () => (
+export const CategoryInput = ({ value, onChange }) => (
   <input
     type='text'
     placeholder='Plase enter a new category'
     class='form-control form-control-lg'
     name='task'
-    value=''
+    value={value}
+    onChange={onChange}
   />
 )
