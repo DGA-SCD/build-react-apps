@@ -5,11 +5,16 @@ export const addNewItem = createAction('ADD_NEW_ITEM')
 
 export const addNewItemAsync = (item) => {
   return (dispatch) => {
-    axios.post('/items', {
-      url: item.textInput,
-      category_id: parseInt(item.categoryId)
-    })
-    dispatch(addNewItem(item))
+    axios
+      .post('/items', {
+        url: item.textInput,
+        category_id: parseInt(item.categoryId)
+      })
+      .then((response) => {
+        const newItem = response.data
+        console.log(newItem)
+        dispatch(addNewItem({ textInput: newItem.url, categoryName: newItem.category_name }))
+      })
   }
 }
 
@@ -21,8 +26,8 @@ export const fetchItems = () => {
     dispatch(fetchItemsPending())
     setTimeout(() => {
       axios.get('/items').then((response) => {
-        const tasksFromAPI = response.data
-        const allItems = tasksFromAPI.map((item) => {
+        const itemsFromAPI = response.data
+        const allItems = itemsFromAPI.map((item) => {
           return {
             textInput: item.url,
             categoryName: item.category_name

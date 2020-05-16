@@ -13,7 +13,7 @@ export const reducer = createReducer(initialState, {
       ...state,
       allItems: state.allItems.concat({
         textInput: action.payload.textInput,
-        categoryId: action.payload.categoryId
+        categoryName: action.payload.categoryName
       })
     }
   },

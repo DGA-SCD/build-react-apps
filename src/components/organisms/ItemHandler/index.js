@@ -18,7 +18,15 @@ class ItemHandler extends React.Component {
         <ItemCreator />
         <div className='row'>
           <CategoryFilterBox />
-          {this.props.allItems.length > 0 ? <ConnectedItemList /> : <NoItem />}
+          {this.props.loading ? (
+            <div className='col p-3 my-3' style={{ textAlign: 'center' }}>
+              Loading...
+            </div>
+          ) : this.props.allItems.length > 0 ? (
+            <ConnectedItemList />
+          ) : (
+            <NoItem />
+          )}
         </div>
       </div>
     )
@@ -26,7 +34,8 @@ class ItemHandler extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  allItems: state.allItems
+  allItems: state.allItems,
+  loading: state.loading
 })
 
 const mapDispatchToProps = {
