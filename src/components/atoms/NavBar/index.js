@@ -1,13 +1,14 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const NavBar = () => {
   return (
-    <nav class='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
-      <a class='navbar-brand' href='/'>
+    <nav className='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
+      <Link className='navbar-brand' to='/'>
         Keep It later!
-      </a>
+      </Link>
       <button
-        class='navbar-toggler'
+        className='navbar-toggler'
         type='button'
         data-toggle='collapse'
         data-target='#navbarCollapse'
@@ -15,19 +16,19 @@ export const NavBar = () => {
         aria-expanded='false'
         aria-label='Toggle navigation'
       >
-        <span class='navbar-toggler-icon'></span>
+        <span className='navbar-toggler-icon'></span>
       </button>
-      <div class='collapse navbar-collapse' id='navbarCollapse'>
-        <ul class='navbar-nav mr-auto'>
-          <li class='nav-item active'>
-            <a class='nav-link' href='/'>
-              Home <span class='sr-only'>(current)</span>
-            </a>
+      <div className='collapse navbar-collapse' id='navbarCollapse'>
+        <ul className='navbar-nav mr-auto'>
+          <li className='nav-item active'>
+            <Link className='nav-link' to='/'>
+              Home <span className='sr-only'>(current)</span>
+            </Link>
           </li>
-          <li class='nav-item'>
-            <a class='nav-link' href='/categories'>
+          <li className='nav-item'>
+            <Link className='nav-link' to='/categories'>
               Categories
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

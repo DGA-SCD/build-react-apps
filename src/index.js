@@ -5,10 +5,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 
-import './index.css'
-import App from './App'
-// import { Categories } from './components/pages/Categories'
-import { Categories } from './components/templates/Categories'
+import { Main } from './components/templates/Main'
+import { Categories } from './components/pages/Categories'
 import * as serviceWorker from './serviceWorker'
 import { reducer } from './store/reducers'
 
@@ -23,7 +21,7 @@ ReactDOM.render(
       <Router>
         <Switch>
           <Route exact path='/'>
-            <App />
+            <Main />
           </Route>
           <Route path='/categories'>
             <Categories />

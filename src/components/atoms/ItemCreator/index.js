@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const TaskCreator = (props) => {
+export const ItemCreator = (props) => {
   return (
     <div className='row'>
       <div className='col-9'>
@@ -13,7 +13,7 @@ export const TaskCreator = (props) => {
           onChange={props.onTaskChange}
         />
       </div>
-      <div className='form-group'>
+      <div className='col form-group'>
         <select
           className='form-control form-control-lg custom-select'
           id='category'
