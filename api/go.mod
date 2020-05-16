@@ -1,4 +1,4 @@
-module github.com/zkan/timely-api
+module github.com/ODDS-TEAM/build-react-apps
 
 go 1.14
 
