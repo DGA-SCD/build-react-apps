@@ -26,10 +26,9 @@
     </nav>
     <div class="container" role="main" style="margin-top: 100px;">
       <div class="row">
-        <div class="col-7"><input type="text" placeholder="What are you working on?" class="form-control form-control-lg" name="task" value=""></div>
-        <div class="form-group"><select class="form-control form-control-lg custom-select" id="category" style="height: 45px;"><option disabled="" selected="">Category</option><option>Study</option><option>Workout</option><option>Housekeeping</option></select></div>
-        <div class="col"><button type="button" class="btn btn-success btn-lg">Start</button></div>
-        <div class="col" style="font-size: 1.9em;">00:00:00</div>
+        <div class="col-8"><input type="text" placeholder="What you want to keep?" class="form-control form-control-lg" name="task" value=""></div>
+        <div class="col-2 form-group"><select class="form-control form-control-lg custom-select" id="category" style="height: 45px;"><option disabled="" selected="">Category</option><option>Study</option><option>Workout</option><option>Housekeeping</option></select></div>
+        <div class="col"><button type="button" class="btn btn-success btn-lg">Add</button></div>
       </div>
       <div class="row">
         <div class="col-3">
@@ -43,34 +42,68 @@
             <button type="button" class="list-group-item list-group-item-action">Workout</button>
           </div>
         </div>
+
         <div class="col">
-          <div class="text-center p-5 my-3 rounded shadow-sm text-dark" style="box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important"><span>No task yet</span></div>
-          <div class="my-3 bg-white rounded shadow-sm" style="box-shadow: 0 .125rem .25rem rgba(0,0,0,.075) !important">
-            <div>
-              <div class="row m-2 py-2 border-bottom border-gray align-items-center d-flex justify-content-between">
-                <div class="col"><span>Attend yoga class Test</span><span class="ml-2 badge badge-info">Workout</span></div>
-                <div class="col-2">Kan</div>
-                <div class="col">Friday, May 8, 2020</div>
-                <div class="col">2:10:35 PM - 3:10:35 PM</div>
-                <div class=""><button class="btn btn-danger">Remove</button></div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-4 shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
               </div>
             </div>
-            <div>
-              <div class="row m-2 py-2 border-bottom border-gray align-items-center d-flex justify-content-between">
-                <div class="col"><span>Attend pilates class</span><span class="ml-2 badge badge-info">Workout</span></div>
-                <div class="col-2">Kan</div>
-                <div class="col">Friday, May 8, 2020</div>
-                <div class="col">2:10:35 PM - 3:10:35 PM</div>
-                <div class=""><button class="btn btn-danger">Remove</button></div>
+            <div class="col-md-6">
+              <div class="card mb-4 shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
               </div>
             </div>
-            <div>
-              <div class="row m-2 py-2 border-gray align-items-center d-flex justify-content-between">
-                <div class="col"><span>Hello</span><span class="ml-2 badge badge-info"></span></div>
-                <div class="col-2">Kan</div>
-                <div class="col">Friday, May 5, 2020</div>
-                <div class="col">9:50:33 PM - 9:50:20 PM</div>
-                <div class=""><button class="btn btn-danger">Remove</button></div>
+            <div class="col-md-6">
+              <div class="card mb-4 shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-md-6">
+              <div class="card mb-4 shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                <div class="card-body">
+                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
