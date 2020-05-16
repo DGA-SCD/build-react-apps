@@ -7,7 +7,7 @@ import thunk from 'redux-thunk'
 
 import './index.css'
 import App from './App'
-import Login from './components/Login'
+import { Categories } from './pages/Categories'
 import * as serviceWorker from './serviceWorker'
 import { reducer } from './store/reducers'
 
@@ -21,11 +21,11 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route path='/app'>
+          <Route exact path='/'>
             <App />
           </Route>
-          <Route path='/'>
-            <Login />
+          <Route path='/categories'>
+            <Categories />
           </Route>
         </Switch>
       </Router>
