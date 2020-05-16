@@ -17,7 +17,11 @@ export const CategoryHandler = () => {
     setCategory(event.target.value)
   }
 
-  const { categories } = useContext(CategoriesContext)
+  const { categories, addNewCategory } = useContext(CategoriesContext)
+
+  const onAddClicked = () => {
+    addNewCategory({ name: category })
+  }
 
   return (
     <div className='container' role='main' style={{ marginTop: '100px' }}>
@@ -26,7 +30,7 @@ export const CategoryHandler = () => {
           <CategoryInput onChange={onCategoryChange} value={category} />
         </div>
         <div className='col'>
-          <CategoryAddButton />
+          <CategoryAddButton onClick={onAddClicked} />
         </div>
       </div>
       <div className='row' style={{ marginTop: '20px' }}>
