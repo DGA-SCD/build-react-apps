@@ -8,8 +8,8 @@ export const addNewItem = createAction('ADD_NEW_ITEM')
 export const addNewItemAsync = (item) => {
   return (dispatch) => {
     axios.post(`${apiServerUrl}/items`, {
-      category_id: item.categoryId,
-      itemUrl: item.url
+      url: item.textInput,
+      category_id: parseInt(item.categoryId)
     })
     dispatch(addNewItem(item))
   }

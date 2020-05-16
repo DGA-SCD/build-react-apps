@@ -1,25 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addNewItem } from '../../../store/actions'
+import { addNewItemAsync } from '../../../store/actions'
 
-class ItemAddButton extends React.Component {
-  render() {
-    return (
-      <button
-        type='button'
-        className='btn btn-success btn-lg'
-        onClick={() =>
-          this.props.addNewItem({
-            textInput: this.props.textInput,
-            categoryId: this.props.categoryId
-          })
-        }
-      >
-        Add
-      </button>
-    )
-  }
+const ItemAddButton = (props) => {
+  return (
+    <button
+      type='button'
+      className='btn btn-success btn-lg'
+      onClick={() =>
+        props.addNewItemAsync({
+          textInput: props.textInput,
+          categoryId: props.categoryId
+        })
+      }
+    >
+      Add
+    </button>
+  )
 }
 
 const mapStateToProps = (state) => ({
@@ -28,7 +26,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  addNewItem
+  addNewItemAsync
 }
 
 export const ConnectedItemAddButton = connect(mapStateToProps, mapDispatchToProps)(ItemAddButton)
