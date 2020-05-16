@@ -9,6 +9,7 @@ import { Main } from './components/pages/Main'
 import { Categories } from './components/pages/Categories'
 import * as serviceWorker from './serviceWorker'
 import { reducer } from './store/reducers'
+import { CategoriesContextProvider } from './contexts'
 
 const store = configureStore({
   reducer,
@@ -18,16 +19,18 @@ const store = configureStore({
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route exact path='/'>
-            <Main />
-          </Route>
-          <Route path='/categories'>
-            <Categories />
-          </Route>
-        </Switch>
-      </Router>
+      <CategoriesContextProvider>
+        <Router>
+          <Switch>
+            <Route exact path='/'>
+              <Main />
+            </Route>
+            <Route path='/categories'>
+              <Categories />
+            </Route>
+          </Switch>
+        </Router>
+      </CategoriesContextProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

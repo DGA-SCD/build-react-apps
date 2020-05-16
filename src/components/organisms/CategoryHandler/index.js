@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 
 import { CategoryInput } from '../../atoms/CategoryInput'
 import { CategoryAddButton } from '../../atoms/CategoryAddButton'
 import { CategoryList } from '../../molecules/CategoryList'
-import { useCategories } from '../../../hooks/useCategories'
+import { CategoriesContext } from '../../../contexts'
 
 const StyledCategoryList = styled(CategoryList)`
   padding: 0;
@@ -18,7 +17,7 @@ export const CategoryHandler = () => {
     setCategory(event.target.value)
   }
 
-  const categories = useCategories()
+  const { categories } = useContext(CategoriesContext)
 
   return (
     <div className='container' role='main' style={{ marginTop: '100px' }}>
