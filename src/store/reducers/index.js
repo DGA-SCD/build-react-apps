@@ -9,7 +9,6 @@ const initialState = {
 
 export const reducer = createReducer(initialState, {
   ADD_NEW_ITEM: (state, action) => {
-    console.log(action)
     return {
       ...state,
       allItems: state.allItems.concat({

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { storeCategoryId } from '../../../store/actions'
 import { CategoriesContext } from '../../../contexts'
 
-const CategorySelectBox = () => {
+const CategorySelectBox = (props) => {
   const { categories } = useContext(CategoriesContext)
 
   return (
@@ -12,7 +12,7 @@ const CategorySelectBox = () => {
       className='form-control form-control-lg custom-select'
       id='category'
       style={{ height: '45px' }}
-      onChange={(e) => this.props.storeCategoryId(e.target.value)}
+      onChange={(e) => props.storeCategoryId(e.target.value)}
     >
       {categories.map((category) => (
         <option key={category.id} value={category.id}>
@@ -23,15 +23,8 @@ const CategorySelectBox = () => {
   )
 }
 
-const mapStateToProps = (state) => ({
-  categoryId: state.categoryId
-})
-
 const mapDispatchToProps = {
   storeCategoryId
 }
 
-export const ConnectedCategorySelectBox = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CategorySelectBox)
+export const ConnectedCategorySelectBox = connect(null, mapDispatchToProps)(CategorySelectBox)
