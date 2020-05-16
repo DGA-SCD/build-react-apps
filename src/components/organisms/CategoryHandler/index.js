@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import { CategoryInput } from '../../atoms/CategoryInput'
@@ -10,13 +10,19 @@ const StyledCategoryList = styled(CategoryList)`
 `
 
 export const CategoryHandler = () => {
-  const categories = ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5']
+  const [category, setCategory] = useState([])
+
+  const onCategoryChange = (event) => {
+    setCategory(event.target.value)
+  }
+
+  const categories = ['Category 1', 'Category 2']
 
   return (
     <div class='container' role='main' style={{ marginTop: '100px' }}>
       <div class='row'>
         <div class='col-8'>
-          <CategoryInput />
+          <CategoryInput onChange={onCategoryChange} value={category} />
         </div>
         <div class='col'>
           <CategoryAddButton />
