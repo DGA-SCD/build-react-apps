@@ -6,7 +6,7 @@ export const CategoryList = (props) => {
   return (
     <ul className={props.className}>
       {props.categories.map((item) => (
-        <CategoryItem name={item} />
+        <CategoryItem key={item.id} name={item.name} />
       ))}
     </ul>
   )
