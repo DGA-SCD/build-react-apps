@@ -2,7 +2,8 @@ import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
   allItems: [],
-  loading: false
+  loading: false,
+  inputText: ''
 }
 
 export const reducer = createReducer(initialState, {
@@ -21,5 +22,9 @@ export const reducer = createReducer(initialState, {
   FETCH_ITEMS_SUCCESS: (_, action) => ({
     allItems: [...action.payload],
     loading: false
+  }),
+  STORE_INPUT_TEXT: (state, action) => ({
+    ...state,
+    inputText: action.payload
   })
 })

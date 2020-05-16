@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { createAction } from '@reduxjs/toolkit'
-import { Item } from '../../components/atoms/Item'
 
 const apiServerUrl = 'http://localhost:8000'
 
@@ -19,9 +18,9 @@ export const addNewItemAsync = (item) => {
 export const fetchItemsPending = createAction('FETCH_ITEMS_PENDING')
 export const fetchItemsSuccess = createAction('FETCH_ITEMS_SUCCESS')
 
-export const fetchTasks = () => {
+export const fetchItems = () => {
   return (dispatch, getState) => {
-    dispatch(fetchTasksPending())
+    dispatch(fetchItemsPending())
     setTimeout(() => {
       axios.get(`${apiServerUrl}/tasks`).then((response) => {
         const tasksFromAPI = response.data
@@ -35,7 +34,7 @@ export const fetchTasks = () => {
             endedAt: task.ended_at
           }
         })
-        dispatch(fetchTasksSuccess(allTasks))
+        dispatch(fetchItemsSuccess(allTasks))
       })
     }, 1000)
   }
@@ -49,3 +48,5 @@ export const deleteTaskAsync = (id) => {
     dispatch(deleteTask(id))
   }
 }
+
+export const storeInputText = createAction('STORE_INPUT_TEXT')
