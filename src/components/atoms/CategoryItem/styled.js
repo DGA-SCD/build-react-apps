@@ -12,7 +12,6 @@ export const StyledListItem = styled.li`
     border: 1px solid red;
     content: 'Remove';
     cursor: pointer;
-    font-weight: bold;
     &::after {
       padding-left: 0.7em;
       content: '🅧';
