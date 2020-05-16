@@ -19,14 +19,13 @@ export const fetchItemsSuccess = createAction('FETCH_ITEMS_SUCCESS')
 export const fetchItems = () => {
   return (dispatch) => {
     dispatch(fetchItemsPending())
-    console.log('hhhhhhh')
     setTimeout(() => {
-      axios.get('/tasks').then((response) => {
+      axios.get('/items').then((response) => {
         const tasksFromAPI = response.data
         const allItems = tasksFromAPI.map((item) => {
           return {
-            url: item.url,
-            categoryName: item.category_id
+            textInput: item.url,
+            categoryName: item.category_name
           }
         })
         dispatch(fetchItemsSuccess(allItems))
