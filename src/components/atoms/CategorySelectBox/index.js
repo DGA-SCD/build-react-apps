@@ -14,6 +14,9 @@ const CategorySelectBox = (props) => {
       style={{ height: '45px' }}
       onChange={(e) => props.storeCategoryId(e.target.value)}
     >
+      <option value='Choose category' disabled selected>
+        Choose category
+      </option>
       {categories.map((category) => (
         <option key={category.id} value={category.id}>
           {category.name}
