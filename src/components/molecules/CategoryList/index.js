@@ -4,7 +4,7 @@ import { CategoryItem } from '../../atoms/CategoryItem'
 
 export const CategoryList = (props) => {
   return (
-    <ul>
+    <ul className={props.className}>
       {props.categories.map((item) => (
         <CategoryItem name={item} />
       ))}
