@@ -9,7 +9,7 @@ export const CategoriesContextProvider = ({ children }) => {
   const [categories, setCategory] = useCategories()
 
   const addNewCategoryToContext = async (category) => {
-    const response = await axios.post('http://localhost:8000/categories', category)
+    const response = await axios.post('/categories', category)
     const data = response.data
 
     const newCategories = categories.concat(data)
@@ -17,7 +17,7 @@ export const CategoriesContextProvider = ({ children }) => {
   }
 
   const removeCategoryFromContext = async (categoryId) => {
-    await axios.delete(`http://localhost:8000/categories/${categoryId}`)
+    await axios.delete(`/categories/${categoryId}`)
     const newCategories = categories.filter((category) => category.id !== categoryId)
     setCategory(newCategories)
   }

@@ -6,7 +6,7 @@ export const useCategories = () => {
 
   useEffect(() => {
     const getCategories = async () => {
-      const response = await axios.get('http://localhost:8000/categories')
+      const response = await axios.get('/categories')
       const data = await response.data
       setCategories(data)
     }

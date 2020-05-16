@@ -1,13 +1,11 @@
 import axios from 'axios'
 import { createAction } from '@reduxjs/toolkit'
 
-const apiServerUrl = 'http://localhost:8000'
-
 export const addNewItem = createAction('ADD_NEW_ITEM')
 
 export const addNewItemAsync = (item) => {
   return (dispatch) => {
-    axios.post(`${apiServerUrl}/items`, {
+    axios.post('/items', {
       url: item.textInput,
       category_id: parseInt(item.categoryId)
     })
@@ -22,7 +20,7 @@ export const fetchItems = () => {
   return (dispatch, getState) => {
     dispatch(fetchItemsPending())
     setTimeout(() => {
-      axios.get(`${apiServerUrl}/tasks`).then((response) => {
+      axios.get('/tasks').then((response) => {
         const tasksFromAPI = response.data
         const allTasks = tasksFromAPI.map((task) => {
           return {
@@ -44,7 +42,7 @@ export const deleteTask = createAction('DELETE_TASK')
 
 export const deleteTaskAsync = (id) => {
   return (dispatch) => {
-    axios.delete(`${apiServerUrl}/tasks/${id}`)
+    axios.delete(`/tasks/${id}`)
     dispatch(deleteTask(id))
   }
 }
