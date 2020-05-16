@@ -1,20 +1,20 @@
 import React from 'react'
 
-import ItemInput from '../../atoms/ItemInput'
-import CategorySelectBox from '../../atoms/CategorySelectBox'
-import { ItemAddButton } from '../../atoms/ItemAddButton'
+import { ConnectedItemInput } from '../../atoms/ItemInput'
+import { ConnectedCategorySelectBox } from '../../atoms/CategorySelectBox'
+import { ConnectedItemAddButton } from '../../atoms/ItemAddButton'
 
 export const ItemCreator = () => {
   return (
     <div className='row'>
       <div className='col-9'>
-        <ItemInput />
+        <ConnectedItemInput />
       </div>
       <div className='col form-group'>
-        <CategorySelectBox />
+        <ConnectedCategorySelectBox />
       </div>
       <div className='col'>
-        <ItemAddButton />
+        <ConnectedItemAddButton />
       </div>
     </div>
   )

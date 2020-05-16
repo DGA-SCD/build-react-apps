@@ -3,15 +3,21 @@ import { createReducer } from '@reduxjs/toolkit'
 const initialState = {
   allItems: [],
   loading: false,
-  inputText: '',
+  textInput: '',
   categoryId: 0
 }
 
 export const reducer = createReducer(initialState, {
-  ADD_NEW_ITEM: (state, action) => ({
-    ...state,
-    allItems: state.allItems.concat(action.payload)
-  }),
+  ADD_NEW_ITEM: (state, action) => {
+    console.log(action)
+    return {
+      ...state,
+      allItems: state.allItems.concat({
+        textInput: action.payload.textInput,
+        categoryId: action.payload.categoryId
+      })
+    }
+  },
   DELETE_ITEM: (state, action) => ({
     ...state,
     allItems: state.allItems.filter((item) => item.id !== action.payload)
@@ -24,9 +30,9 @@ export const reducer = createReducer(initialState, {
     allItems: [...action.payload],
     loading: false
   }),
-  STORE_INPUT_TEXT: (state, action) => ({
+  STORE_TEXT_INPUT: (state, action) => ({
     ...state,
-    inputText: action.payload
+    textInput: action.payload
   }),
   STORE_CATEGORY_ID: (state, action) => ({
     ...state,

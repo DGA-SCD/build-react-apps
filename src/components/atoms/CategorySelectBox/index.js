@@ -12,9 +12,6 @@ class CategorySelectBox extends React.Component {
         style={{ height: '45px' }}
         onChange={(e) => this.props.storeCategoryId(e.target.value)}
       >
-        <option disabled='' selected=''>
-          Category
-        </option>
         <option value={1}>Study</option>
         <option value={2}>Workout</option>
         <option value={3}>Housekeeping</option>
@@ -31,4 +28,7 @@ const mapDispatchToProps = {
   storeCategoryId
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategorySelectBox)
+export const ConnectedCategorySelectBox = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CategorySelectBox)

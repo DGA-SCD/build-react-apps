@@ -49,5 +49,5 @@ export const deleteTaskAsync = (id) => {
   }
 }
 
-export const storeInputText = createAction('STORE_INPUT_TEXT')
+export const storeTextInput = createAction('STORE_TEXT_INPUT')
 export const storeCategoryId = createAction('STORE_CATEGORY_ID')
