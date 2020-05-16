@@ -17,7 +17,9 @@ export const CategoryHandler = () => {
     setCategory(event.target.value)
   }
 
-  const { categories, addNewCategoryToContext } = useContext(CategoriesContext)
+  const { categories, addNewCategoryToContext, removeCategoryFromContext } = useContext(
+    CategoriesContext
+  )
 
   const onAddClicked = () => {
     addNewCategoryToContext({ name: category })
@@ -35,7 +37,7 @@ export const CategoryHandler = () => {
       </div>
       <div className='row' style={{ marginTop: '20px' }}>
         <div className='col'>
-          <StyledCategoryList categories={categories} />
+          <StyledCategoryList categories={categories} onRemoveClicked />
         </div>
       </div>
     </div>
