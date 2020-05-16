@@ -1,11 +1,9 @@
 import React from 'react'
 
-import { StopWatch } from './StopWatch'
-
 export const TaskCreator = (props) => {
   return (
     <div className='row'>
-      <div className='col-7'>
+      <div className='col-9'>
         <input
           type='text'
           placeholder='What are you working on?'
@@ -41,7 +39,6 @@ export const TaskCreator = (props) => {
           </button>
         )}
       </div>
-      <StopWatch isWatchStarted={props.isStarted} />
     </div>
   )
 }
