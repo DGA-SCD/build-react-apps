@@ -8,8 +8,8 @@ RUN curl -L https://github.com/golang-migrate/migrate/releases/download/v4.9.1/m
 
 WORKDIR /app
 
-#COPY go.mod go.sum ./
-#RUN go mod download
+COPY go.mod go.sum ./
+RUN go mod download
 
 COPY . .
 

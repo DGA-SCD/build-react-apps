@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-	"time"
 
 	"encoding/json"
 	"github.com/gorilla/mux"
@@ -14,16 +13,17 @@ import (
 type Item struct {
 	ID              int64  `json:"id"`
 	Title           string `json:"title"`
-	Category        string `json:"category"`
-	MetaImage       string `json:"meta_image"`
+	CategoryID      string `json:"category_id"`
+	CategoryName    string `json:"category_name"`
+	MetaImageURL    string `json:"meta_image_url"`
 	MetaDescription string `json:"meta_description"`
 	URL             string `json:"url"`
 }
 
 type ItemCreationRequest struct {
 	Title           string `json:"title"`
-	Category        string `json:"category"`
-	MetaImage       string `json:"meta_image"`
+	CategoryID      int64  `json:"category_id"`
+	MetaImageURL    string `json:"meta_image_url"`
 	MetaDescription string `json:"meta_description"`
 	URL             string `json:"url"`
 }
@@ -34,7 +34,7 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case "GET":
-			stmt := "SELECT id, title, category, meta_image, meta_description, url FROM items"
+			stmt := "SELECT i.id, title, c.id, c.name, meta_image_url, meta_description, url FROM items i JOIN categories c ON i.category_id = c.id"
 			rows, err := db.Query(stmt)
 			if err != nil {
 				log.Print(err)
@@ -44,7 +44,7 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 
 			for rows.Next() {
 				var item Item
-				if err := rows.Scan(&item.ID, &item.Title, &item.Category, &item.MetaImage, &item.MetaDescription, &item.URL); err != nil {
+				if err := rows.Scan(&item.ID, &item.Title, &item.CategoryID, &item.CategoryName, &item.MetaImageURL, &item.MetaDescription, &item.URL); err != nil {
 					log.Fatal(err)
 				}
 				items = append(items, item)
@@ -59,28 +59,35 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 			w.Header().Set("Content-Type", "application/json")
 			w.Write(js)
 		case "POST":
-			var t ItemCreationRequest
+			var i ItemCreationRequest
 
-			if err := json.NewDecoder(r.Body).Decode(&t); err != nil {
+			if err := json.NewDecoder(r.Body).Decode(&i); err != nil {
 				http.Error(w, err.Error(), http.StatusBadRequest)
 				return
 			}
 
-			stmt := `INSERT into items (title, category, meta_image, meta_description, url) VALUES ($1, $2, $3, $4, $5) RETURNING id`
+			stmt := `INSERT into items (title, category_id, meta_image_url, meta_description, url) VALUES ($1, $2, $3, $4, $5) RETURNING id`
 
 			var lastInsertId int64
-			err := db.QueryRow(stmt, t.Title, t.Category, t.MetaImage, t.MetaDescription, t.URL).Scan(&lastInsertId)
+			err := db.QueryRow(stmt, i.Title, i.CategoryID, i.MetaImageURL, i.MetaDescription, i.URL).Scan(&lastInsertId)
 			if err != nil {
 				panic(err)
 			}
 
+			stmt = "SELECT name FROM categories WHERE id = $1"
+			var categoryName string
+			err = db.QueryRow(stmt, i.CategoryID).Scan(&categoryName)
+			if err != nil {
+				log.Print(err)
+			}
+
 			item := Item{
 				ID:              lastInsertId,
-				Title:           t.Title,
-				Category:        t.Category,
-				MetaImage:       t.MetaImage,
-				MetaDescription: t.MetaDescription,
-				URL:             t.URL,
+				Title:           i.Title,
+				CategoryName:    categoryName,
+				MetaImageURL:    i.MetaImageURL,
+				MetaDescription: i.MetaDescription,
+				URL:             i.URL,
 			}
 
 			js, err := json.Marshal(item)

@@ -1,4 +1,4 @@
-module github.com/ODDS-TEAM/build-react-apps
+module github.com/ODDS-TEAM/build-react-apps/api
 
 go 1.14
 

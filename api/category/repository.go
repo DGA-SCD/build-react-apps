@@ -5,7 +5,6 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-	"time"
 
 	"encoding/json"
 	"github.com/gorilla/mux"
@@ -26,7 +25,7 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case "GET":
-			stmt := "SELECT name FROM categories"
+			stmt := "SELECT id, name FROM categories"
 			rows, err := db.Query(stmt)
 			if err != nil {
 				log.Print(err)
@@ -53,7 +52,7 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 		case "POST":
 			var c CategoryCreationRequest
 
-			if err := json.NewDecoder(r.Body).Decode(&t); err != nil {
+			if err := json.NewDecoder(r.Body).Decode(&c); err != nil {
 				http.Error(w, err.Error(), http.StatusBadRequest)
 				return
 			}
@@ -68,7 +67,7 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 
 			category := Category{
 				ID:   lastInsertId,
-				Name: t.Name,
+				Name: c.Name,
 			}
 
 			js, err := json.Marshal(category)
