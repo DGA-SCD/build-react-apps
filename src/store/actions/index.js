@@ -1,25 +1,23 @@
-import { createAction } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { createAction } from '@reduxjs/toolkit'
+import { Item } from '../../components/atoms/Item'
 
 const apiServerUrl = 'http://localhost:8000'
 
-export const addNewTask = createAction('ADD_NEW_TASK')
+export const addNewItem = createAction('ADD_NEW_ITEM')
 
-export const addNewTaskAsync = (task) => {
+export const addNewItemAsync = (item) => {
   return (dispatch) => {
-    axios.post(`${apiServerUrl}/tasks`, {
-      name: task.name,
-      category: task.category,
-      started_at: task.startedAt,
-      ended_at: task.endedAt,
-      username: window.sessionStorage.getItem('username')
+    axios.post(`${apiServerUrl}/items`, {
+      category_id: item.categoryId,
+      itemUrl: item.url
     })
-    dispatch(addNewTask(task))
+    dispatch(addNewItem(item))
   }
 }
 
-export const fetchTasksPending = createAction('FETCH_TASKS_PENDING')
-export const fetchTasksSuccess = createAction('FETCH_TASKS_SUCCESS')
+export const fetchItemsPending = createAction('FETCH_ITEMS_PENDING')
+export const fetchItemsSuccess = createAction('FETCH_ITEMS_SUCCESS')
 
 export const fetchTasks = () => {
   return (dispatch, getState) => {

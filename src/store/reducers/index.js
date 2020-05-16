@@ -1,25 +1,25 @@
 import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
-  allTasks: [],
+  allItems: [],
   loading: false
 }
 
 export const reducer = createReducer(initialState, {
-  ADD_NEW_TASK: (state, action) => ({
+  ADD_NEW_ITEM: (state, action) => ({
     ...state,
-    allTasks: state.allTasks.concat(action.payload)
+    allItems: state.allItems.concat(action.payload)
   }),
-  DELETE_TASK: (state, action) => ({
+  DELETE_ITEM: (state, action) => ({
     ...state,
-    allTasks: state.allTasks.filter((task) => task.id !== action.payload)
+    allItems: state.allItems.filter((item) => item.id !== action.payload)
   }),
-  FETCH_TASKS_PENDING: (state) => ({
+  FETCH_ITEMS_PENDING: (state) => ({
     ...state,
     loading: true
   }),
-  FETCH_TASKS_SUCCESS: (_, action) => ({
-    allTasks: [...action.payload],
+  FETCH_ITEMS_SUCCESS: (_, action) => ({
+    allItems: [...action.payload],
     loading: false
   })
 })
