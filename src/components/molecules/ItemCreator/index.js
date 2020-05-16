@@ -1,7 +1,7 @@
 import React from 'react'
 
 import ItemInput from '../../atoms/ItemInput'
-import { CategorySelectBox } from '../../atoms/CategorySelectBox'
+import CategorySelectBox from '../../atoms/CategorySelectBox'
 import { ItemAddButton } from '../../atoms/ItemAddButton'
 
 export const ItemCreator = () => {
