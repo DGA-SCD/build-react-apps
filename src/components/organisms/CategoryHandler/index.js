@@ -17,10 +17,10 @@ export const CategoryHandler = () => {
     setCategory(event.target.value)
   }
 
-  const { categories, addNewCategory } = useContext(CategoriesContext)
+  const { categories, addNewCategoryToContext } = useContext(CategoriesContext)
 
   const onAddClicked = () => {
-    addNewCategory({ name: category })
+    addNewCategoryToContext({ name: category })
   }
 
   return (
