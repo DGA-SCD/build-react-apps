@@ -25,8 +25,9 @@ export const reducer = createReducer(initialState, {
     ...state,
     loading: true
   }),
-  FETCH_ITEMS_SUCCESS: (_, action) => ({
-    allItems: [...action.payload],
+  FETCH_ITEMS_SUCCESS: (state, action) => ({
+    ...state,
+    allItems: [...action.payload.allItems],
     loading: false
   }),
   STORE_TEXT_INPUT: (state, action) => ({

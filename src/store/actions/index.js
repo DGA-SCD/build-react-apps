@@ -17,33 +17,30 @@ export const fetchItemsPending = createAction('FETCH_ITEMS_PENDING')
 export const fetchItemsSuccess = createAction('FETCH_ITEMS_SUCCESS')
 
 export const fetchItems = () => {
-  return (dispatch, getState) => {
+  return (dispatch) => {
     dispatch(fetchItemsPending())
+    console.log('hhhhhhh')
     setTimeout(() => {
       axios.get('/tasks').then((response) => {
         const tasksFromAPI = response.data
-        const allTasks = tasksFromAPI.map((task) => {
+        const allItems = tasksFromAPI.map((item) => {
           return {
-            id: task.id,
-            name: task.name,
-            category: task.category,
-            username: task.username,
-            startedAt: task.started_at,
-            endedAt: task.ended_at
+            url: item.url,
+            categoryName: item.category_id
           }
         })
-        dispatch(fetchItemsSuccess(allTasks))
+        dispatch(fetchItemsSuccess(allItems))
       })
     }, 1000)
   }
 }
 
-export const deleteTask = createAction('DELETE_TASK')
+export const deleteItem = createAction('DELETE_ITEM')
 
 export const deleteTaskAsync = (id) => {
   return (dispatch) => {
-    axios.delete(`/tasks/${id}`)
-    dispatch(deleteTask(id))
+    axios.delete(`/items/${id}`)
+    dispatch(deleteItem(id))
   }
 }
 
