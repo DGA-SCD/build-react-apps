@@ -13,6 +13,7 @@ export const reducer = createReducer(initialState, {
         {
           id: action.payload.itemId,
           textInput: action.payload.textInput,
+          categoryId: action.payload.categoryId,
           categoryName: action.payload.categoryName
         },
         ...state.allItems

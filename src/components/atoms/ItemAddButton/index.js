@@ -21,8 +21,8 @@ const ItemAddButton = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  textInput: state.textInput,
-  categoryId: state.categoryId
+  textInput: state.textInputs.textInput,
+  categoryId: state.categories.categoryId
 })
 
 const mapDispatchToProps = {

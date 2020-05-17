@@ -12,30 +12,42 @@ export const addNewItemAsync = (item) => {
       })
       .then((response) => {
         const newItem = response.data
-        dispatch(addNewItem({ textInput: newItem.url, categoryName: newItem.category_name.String }))
+        dispatch(
+          addNewItem({
+            textInput: newItem.url,
+            categoryId: newItem.category_id.String,
+            categoryName: newItem.category_name.String
+          })
+        )
       })
   }
 }
 
 export const fetchItemsPending = createAction('FETCH_ITEMS_PENDING')
+
 export const fetchItemsSuccess = createAction('FETCH_ITEMS_SUCCESS')
 
-export const fetchItems = () => {
+export const fetchItems = (categoryId) => {
   return (dispatch) => {
     dispatch(fetchItemsPending())
     setTimeout(() => {
-      axios.get('/items').then((response) => {
+      let url = '/items'
+      if (categoryId) {
+        url = `${url}?category=${categoryId}`
+      }
+      axios.get(url).then((response) => {
         const itemsFromAPI = response.data
         const allItems = itemsFromAPI.map((item) => {
           return {
             id: item.id,
             textInput: item.url,
+            categoryId: item.category_id,
             categoryName: item.category_name
           }
         })
         dispatch(fetchItemsSuccess(allItems))
       })
-    }, 1000)
+    }, 500)
   }
 }
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { NoItem } from '../../atoms/NoItem'
 import { ItemCreator } from '../../molecules/ItemCreator'
 import { ConnectedItemList } from '../../molecules/ItemList'
-import { CategoryFilterBox } from '../../atoms/CategoryFilterBox'
+import { ConnectedCategoryFilterBox } from '../../atoms/CategoryFilterBox'
 import { fetchItems } from '../../../store/actions'
 
 class ItemHandler extends React.Component {
@@ -12,12 +12,17 @@ class ItemHandler extends React.Component {
     this.props.fetchItems()
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log('prevProps', prevProps)
+    console.log('currProps', this.props)
+  }
+
   render() {
     return (
       <div className='container' role='main' style={{ marginTop: '100px' }}>
         <ItemCreator />
         <div className='row'>
-          <CategoryFilterBox />
+          <ConnectedCategoryFilterBox />
           {this.props.loading ? (
             <div className='col p-3 my-3' style={{ textAlign: 'center' }}>
               Loading...
