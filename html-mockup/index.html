@@ -1,92 +1,124 @@
 <html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<head>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-
-<body>
-  <div class="App">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Keep It Later!</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categories</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <div class="container" role="main" style="margin-top: 100px;">
-      <div class="row">
-        <div class="col-9"><input type="text" placeholder="What do you wanna keep?" class="form-control form-control-lg" name="task" value=""></div>
-        <div class="form-group"><select class="form-control form-control-lg custom-select" id="category" style="height: 45px;"><option disabled="" selected="">Category</option><option>Study</option><option>Workout</option><option>Housekeeping</option></select></div>
-        <div class="col"><button type="button" class="btn btn-success btn-lg">Add</button></div>
-      </div>
-      <div class="row">
-        <div class="col-3">
-          <div class="list-group">
-            <button type="button" class="list-group-item">Categories</button>
-            <button type="button" class="list-group-item list-group-item-action">Study</button>
-            <button type="button" class="list-group-item list-group-item-action">Workout</button>
+  <body>
+    <div>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="index.html">Keep It Later!</a
+        ><button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+          aria-controls="navbarCollapse"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html"
+                >Home <span class="sr-only">(current)</span></a
+              >
+            </li>
+            <li class="nav-item false">
+              <a class="nav-link" href="categories.html">Categories</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container" role="main" style="margin-top: 100px;">
+        <div class="row">
+          <div class="col-9">
+            <input
+              type="text"
+              placeholder="What URL do you wanna keep it for later?"
+              class="form-control form-control-lg"
+              name="url"
+              value=""
+            />
+          </div>
+          <div class="col form-group">
+            <select
+              class="form-control form-control-lg custom-select"
+              id="category"
+              style="height: 45px;"
+              ><option value="Choose category" disabled=""
+                >Choose category</option
+              ><option value="1">Knowledge</option
+              ><option value="2">Personal</option
+              ><option value="3">Lame Stuff</option></select
+            >
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-success btn-lg">Add</button>
           </div>
         </div>
-        <div class="col">
-          <div class="row">
-            <div class="col-md-6 col-sm-12">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" width="100%" height="225" src="" />
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-end">
-                      <h4><span class="badge badge-info">Workout</span></h4>
-                  </div>
-                </div>
+        <div class="row">
+          <div class="col-3">
+            <div class="list-group">
+              <button type="button" class="list-group-item">Categories</button
+              ><button
+                type="button"
+                class="list-group-item list-group-item-action"
+              >
+                Knowledge</button
+              ><button
+                type="button"
+                class="list-group-item list-group-item-action"
+              >
+                Personal</button
+              ><button
+                type="button"
+                class="list-group-item list-group-item-action"
+              >
+                Lame Stuff
+              </button>
+            </div>
+          </div>
+          <div class="col">
+            <div
+              class="row m-2 py-2 border-bottom border-gray align-items-center d-flex justify-content-between"
+            >
+              <div class="col-10">
+                <a
+                  href="https://github.com/django-dbbackup/django-dbbackup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >https://github.com/django-dbbackup/django-dbbackup</a
+                ><span class="ml-2 badge badge-info"></span>
+              </div>
+              <div class="col">
+                <button class="btn btn-danger">Remove</button>
               </div>
             </div>
-            <div class="col-md-6 col-sm-12">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" width="100%" height="225" src="" />
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-end">
-                      <h4><span class="badge badge-info">Housekeeping</span></h4>
-                  </div>
-                </div>
+            <div
+              class="row m-2 py-2 border-bottom border-gray align-items-center d-flex justify-content-between"
+            >
+              <div class="col-10">
+                <a
+                  href="https://medium.com/@etherealm/named-export-vs-default-export-in-es6-affb483a0910"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >https://medium.com/@etherealm/named-export-vs-default-export-in-es6-affb483a0910</a
+                ><span class="ml-2 badge badge-info">Knowledge</span>
               </div>
-            </div>
-            <div class="col-md-6 col-sm-12">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" width="100%" height="225" src="" />
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-end">
-                      <h4><span class="badge badge-info">Workout</span></h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-sm-12">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" width="100%" height="225" src="" />
-                <div class="card-body">
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <div class="d-flex justify-content-end">
-                      <h4><span class="badge badge-info">Study</span></h4>
-                  </div>
-                </div>
+              <div class="col">
+                <button class="btn btn-danger">Remove</button>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>
