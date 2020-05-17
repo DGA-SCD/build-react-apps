@@ -1,6 +1,20 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
 
+const MenuLink = (props) => (
+  <li className={`nav-item ${props.location.pathname === props.path && 'active'}`}>
+    <Link className='nav-link' to={props.path}>
+      {props.name}
+    </Link>
+  </li>
+)
+
+const HomeMenuLink = (props) => <MenuLink location={props.location} path='/' name='Home' />
+
+const CategoryMenuLink = (props) => (
+  <MenuLink location={props.location} path='/categories' name='Categories' />
+)
+
 const NavBar = ({ location }) => {
   return (
     <nav className='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
@@ -20,16 +34,8 @@ const NavBar = ({ location }) => {
       </button>
       <div className='collapse navbar-collapse' id='navbarCollapse'>
         <ul className='navbar-nav mr-auto'>
-          <li className={`nav-item ${location.pathname === '/' && 'active'}`}>
-            <Link className='nav-link' to='/'>
-              Home <span className='sr-only'>(current)</span>
-            </Link>
-          </li>
-          <li className={`nav-item ${location.pathname === '/categories' && 'active'}`}>
-            <Link className='nav-link' to='/categories'>
-              Categories
-            </Link>
-          </li>
+          <HomeMenuLink location={location} />
+          <CategoryMenuLink location={location} />
         </ul>
       </div>
     </nav>
