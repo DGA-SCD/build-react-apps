@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { NavBar } from '../../atoms/NavBar'
+import { NavBarEnhancer as NavBar } from '../../atoms/NavBar'
 import { CategoryHandler } from '../../organisms/CategoryHandler'
 
 export const Categories = () => {
