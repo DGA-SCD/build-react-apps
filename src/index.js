@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { configureStore } from '@reduxjs/toolkit'
@@ -6,8 +6,6 @@ import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
 import axios from 'axios'
 
-import { Main } from './components/pages/Main'
-import { Categories } from './components/pages/Categories'
 import * as serviceWorker from './serviceWorker'
 import { reducer as categoriesReducer } from './store/reducers/categories'
 import { reducer as itemsReducer } from './store/reducers/items'
@@ -21,19 +19,24 @@ const store = configureStore({
   middleware: [thunk]
 })
 
+const Main = React.lazy(() => import('./components/pages/Main'))
+const Categories = React.lazy(() => import('./components/pages/Categories'))
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <CategoriesContextProvider>
         <Router>
-          <Switch>
-            <Route exact path='/'>
-              <Main />
-            </Route>
-            <Route path='/categories'>
-              <Categories />
-            </Route>
-          </Switch>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+              <Route exact path='/'>
+                <Main />
+              </Route>
+              <Route path='/categories'>
+                <Categories />
+              </Route>
+            </Switch>
+          </Suspense>
         </Router>
       </CategoriesContextProvider>
     </Provider>
