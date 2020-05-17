@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
 
 const MenuLink = (props) => (
@@ -43,3 +44,7 @@ const NavBar = ({ location }) => {
 }
 
 export const NavBarEnhancer = withRouter(NavBar)
+
+NavBar.propTypes = {
+  location: PropTypes.object
+}
