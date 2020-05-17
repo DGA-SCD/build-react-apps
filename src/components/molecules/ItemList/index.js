@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { Item } from '../../atoms/Item'
+import { ConnectedItem } from '../../atoms/Item'
 
 const ItemList = (props) => {
   return (
     <div className='col'>
       {props.allItems.map((item) => (
-        <Item url={item.textInput} categoryName={item.categoryName} />
+        <ConnectedItem itemId={item.id} url={item.textInput} categoryName={item.categoryName} />
       ))}
     </div>
   )

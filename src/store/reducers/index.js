@@ -12,6 +12,7 @@ export const reducer = createReducer(initialState, {
     return {
       ...state,
       allItems: state.allItems.concat({
+        id: action.payload.itemId,
         textInput: action.payload.textInput,
         categoryName: action.payload.categoryName
       })

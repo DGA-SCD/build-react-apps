@@ -29,6 +29,7 @@ export const fetchItems = () => {
         const itemsFromAPI = response.data
         const allItems = itemsFromAPI.map((item) => {
           return {
+            id: item.id,
             textInput: item.url,
             categoryName: item.category_name
           }
