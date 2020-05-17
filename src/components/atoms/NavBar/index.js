@@ -1,7 +1,7 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
-export const NavBar = () => {
+const NavBar = ({ location }) => {
   return (
     <nav className='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
       <Link className='navbar-brand' to='/'>
@@ -20,12 +20,12 @@ export const NavBar = () => {
       </button>
       <div className='collapse navbar-collapse' id='navbarCollapse'>
         <ul className='navbar-nav mr-auto'>
-          <li className='nav-item active'>
+          <li className={`nav-item ${location.pathname === '/' && 'active'}`}>
             <Link className='nav-link' to='/'>
               Home <span className='sr-only'>(current)</span>
             </Link>
           </li>
-          <li className='nav-item'>
+          <li className={`nav-item ${location.pathname === '/categories' && 'active'}`}>
             <Link className='nav-link' to='/categories'>
               Categories
             </Link>
@@ -35,3 +35,5 @@ export const NavBar = () => {
     </nav>
   )
 }
+
+export const NavBarEnhancer = withRouter(NavBar)
