@@ -50,6 +50,7 @@ func main() {
 	})
 
 	r.HandleFunc("/items", item.HandleRequest(db)).Methods(http.MethodGet, http.MethodPost)
+	r.HandleFunc("/items", item.HandleRequest(db)).Queries("category", "{category}").Methods(http.MethodGet, http.MethodPost)
 	r.HandleFunc("/items/{id}", item.Delete(db)).Methods(http.MethodDelete)
 
 	r.HandleFunc("/categories", category.HandleRequest(db)).Methods(http.MethodGet, http.MethodPost)
