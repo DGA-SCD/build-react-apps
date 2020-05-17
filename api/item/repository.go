@@ -11,15 +11,27 @@ import (
 )
 
 type Item struct {
-	ID           int64  `json:"id"`
-	CategoryID   string `json:"category_id"`
-	CategoryName string `json:"category_name"`
-	URL          string `json:"url"`
+	ID           int64      `json:"id"`
+	CategoryID   NullString `json:"category_id"`
+	CategoryName NullString `json:"category_name"`
+	URL          string     `json:"url"`
 }
 
 type ItemCreationRequest struct {
 	CategoryID int64  `json:"category_id"`
 	URL        string `json:"url"`
+}
+
+type NullString struct {
+	sql.NullString
+}
+
+// MarshalJSON for NullString
+func (ns *NullString) MarshalJSON() ([]byte, error) {
+	if !ns.Valid {
+		return []byte("null"), nil
+	}
+	return json.Marshal(ns.String)
 }
 
 type Items []Item
@@ -69,7 +81,7 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 			}
 
 			stmt = "SELECT name FROM categories WHERE id = $1"
-			var categoryName string
+			var categoryName NullString
 			err = db.QueryRow(stmt, i.CategoryID).Scan(&categoryName)
 			if err != nil {
 				log.Print(err)
