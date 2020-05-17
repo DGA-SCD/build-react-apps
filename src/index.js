@@ -9,13 +9,15 @@ import axios from 'axios'
 import { Main } from './components/pages/Main'
 import { Categories } from './components/pages/Categories'
 import * as serviceWorker from './serviceWorker'
-import { reducer } from './store/reducers'
+import { reducer as categoriesReducer } from './store/reducers/categories'
+import { reducer as itemsReducer } from './store/reducers/items'
+import { reducer as textInputsReducer } from './store/reducers/textInputs'
 import { CategoriesContextProvider } from './contexts'
 
 axios.defaults.baseURL = 'http://localhost:8000'
 
 const store = configureStore({
-  reducer,
+  reducer: { categories: categoriesReducer, items: itemsReducer, textInputs: textInputsReducer },
   middleware: [thunk]
 })
 

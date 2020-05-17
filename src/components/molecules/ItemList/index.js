@@ -14,7 +14,7 @@ const ItemList = (props) => {
 }
 
 const mapStateToProps = (state) => ({
-  allItems: state.allItems
+  allItems: state.items.allItems
 })
 
 export const ConnectedItemList = connect(mapStateToProps)(ItemList)

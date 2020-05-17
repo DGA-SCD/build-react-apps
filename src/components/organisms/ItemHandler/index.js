@@ -34,8 +34,8 @@ class ItemHandler extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  allItems: state.allItems,
-  loading: state.loading
+  allItems: state.items.allItems,
+  loading: state.items.loading
 })
 
 const mapDispatchToProps = {

@@ -2,9 +2,7 @@ import { createReducer } from '@reduxjs/toolkit'
 
 const initialState = {
   allItems: [],
-  loading: false,
-  textInput: '',
-  categoryId: 0
+  loading: false
 }
 
 export const reducer = createReducer(initialState, {
@@ -33,13 +31,5 @@ export const reducer = createReducer(initialState, {
     ...state,
     allItems: [...action.payload],
     loading: false
-  }),
-  STORE_TEXT_INPUT: (state, action) => ({
-    ...state,
-    textInput: action.payload
-  }),
-  STORE_CATEGORY_ID: (state, action) => ({
-    ...state,
-    categoryId: action.payload
   })
 })

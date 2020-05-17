@@ -19,7 +19,7 @@ class ItemInput extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-  textInput: state.textInput
+  textInput: state.textInputs.textInput
 })
 
 const mapDispatchToProps = {
