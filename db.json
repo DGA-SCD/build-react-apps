@@ -5,5 +5,9 @@
     "meta_image": "https://www.google.com",
     "meta_description": "Description",
     "url": "https://www.google.com"
+  }],
+  "categories": [{
+    "id": 1,
+    "name": "Study"
   }]
 }
