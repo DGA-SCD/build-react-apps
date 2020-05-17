@@ -12,7 +12,6 @@ export const addNewItemAsync = (item) => {
       })
       .then((response) => {
         const newItem = response.data
-        console.log(newItem)
         dispatch(addNewItem({ textInput: newItem.url, categoryName: newItem.category_name.String }))
       })
   }
