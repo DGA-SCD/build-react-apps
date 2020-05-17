@@ -14,6 +14,7 @@ export const addNewItemAsync = (item) => {
         const newItem = response.data
         dispatch(
           addNewItem({
+            itemId: newItem.id,
             textInput: newItem.url,
             categoryId: newItem.category_id.String,
             categoryName: newItem.category_name.String
