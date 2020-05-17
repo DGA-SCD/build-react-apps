@@ -40,7 +40,7 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case "GET":
-			stmt := "SELECT i.id, c.id, c.name, url FROM items i LEFT JOIN categories c ON i.category_id = c.id"
+			stmt := "SELECT i.id, c.id, c.name, url FROM items i LEFT JOIN categories c ON i.category_id = c.id ORDER by i.id DESC"
 			rows, err := db.Query(stmt)
 			if err != nil {
 				log.Print(err)

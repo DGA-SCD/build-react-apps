@@ -11,11 +11,14 @@ export const reducer = createReducer(initialState, {
   ADD_NEW_ITEM: (state, action) => {
     return {
       ...state,
-      allItems: state.allItems.concat({
-        id: action.payload.itemId,
-        textInput: action.payload.textInput,
-        categoryName: action.payload.categoryName
-      })
+      allItems: [
+        {
+          id: action.payload.itemId,
+          textInput: action.payload.textInput,
+          categoryName: action.payload.categoryName
+        },
+        ...state.allItems
+      ]
     }
   },
   DELETE_ITEM: (state, action) => ({
