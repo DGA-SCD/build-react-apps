@@ -11,21 +11,15 @@ import (
 )
 
 type Item struct {
-	ID              int64  `json:"id"`
-	Title           string `json:"title"`
-	CategoryID      string `json:"category_id"`
-	CategoryName    string `json:"category_name"`
-	MetaImageURL    string `json:"meta_image_url"`
-	MetaDescription string `json:"meta_description"`
-	URL             string `json:"url"`
+	ID           int64  `json:"id"`
+	CategoryID   string `json:"category_id"`
+	CategoryName string `json:"category_name"`
+	URL          string `json:"url"`
 }
 
 type ItemCreationRequest struct {
-	Title           string `json:"title"`
-	CategoryID      int64  `json:"category_id"`
-	MetaImageURL    string `json:"meta_image_url"`
-	MetaDescription string `json:"meta_description"`
-	URL             string `json:"url"`
+	CategoryID int64  `json:"category_id"`
+	URL        string `json:"url"`
 }
 
 type Items []Item
@@ -34,7 +28,7 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case "GET":
-			stmt := "SELECT i.id, title, c.id, c.name, meta_image_url, meta_description, url FROM items i JOIN categories c ON i.category_id = c.id"
+			stmt := "SELECT i.id, c.id, c.name, url FROM items i LEFT JOIN categories c ON i.category_id = c.id"
 			rows, err := db.Query(stmt)
 			if err != nil {
 				log.Print(err)
@@ -44,7 +38,7 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 
 			for rows.Next() {
 				var item Item
-				if err := rows.Scan(&item.ID, &item.Title, &item.CategoryID, &item.CategoryName, &item.MetaImageURL, &item.MetaDescription, &item.URL); err != nil {
+				if err := rows.Scan(&item.ID, &item.CategoryID, &item.CategoryName, &item.URL); err != nil {
 					log.Fatal(err)
 				}
 				items = append(items, item)
@@ -66,10 +60,10 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 				return
 			}
 
-			stmt := `INSERT into items (title, category_id, meta_image_url, meta_description, url) VALUES ($1, $2, $3, $4, $5) RETURNING id`
+			stmt := `INSERT into items (category_id, url) VALUES ($1, $2) RETURNING id`
 
 			var lastInsertId int64
-			err := db.QueryRow(stmt, i.Title, i.CategoryID, i.MetaImageURL, i.MetaDescription, i.URL).Scan(&lastInsertId)
+			err := db.QueryRow(stmt, i.CategoryID, i.URL).Scan(&lastInsertId)
 			if err != nil {
 				panic(err)
 			}
@@ -82,12 +76,9 @@ func HandleRequest(db *sql.DB) http.HandlerFunc {
 			}
 
 			item := Item{
-				ID:              lastInsertId,
-				Title:           i.Title,
-				CategoryName:    categoryName,
-				MetaImageURL:    i.MetaImageURL,
-				MetaDescription: i.MetaDescription,
-				URL:             i.URL,
+				ID:           lastInsertId,
+				CategoryName: categoryName,
+				URL:          i.URL,
 			}
 
 			js, err := json.Marshal(item)
