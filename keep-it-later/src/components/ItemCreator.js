@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ItemCreator = ({ itemUrl, onItemUrlChange }) => {
+export const ItemCreator = ({ itemUrl, onItemUrlChange, category, onCategoryChange }) => {
   return (
     <div className='row'>
       <div className='col-9'>
@@ -18,13 +18,20 @@ export const ItemCreator = ({ itemUrl, onItemUrlChange }) => {
           className='form-control form-control-lg custom-select'
           id='category'
           style={{ height: '45px' }}
+          onChange={onCategoryChange}
         >
           <option value='Choose category' disabled=''>
             Choose category
           </option>
-          <option value='1'>Knowledge</option>
-          <option value='2'>Personal</option>
-          <option value='3'>Lame Stuff</option>
+          <option value='Knowledge' selected={category === 'Knowledge'}>
+            Knowledge
+          </option>
+          <option value='Personal' selected={category === 'Personal'}>
+            Personal
+          </option>
+          <option value='Lame Stuff' selected={category === 'Lame Stuff'}>
+            Lame Stuff
+          </option>
         </select>
       </div>
       <div className='col'>
