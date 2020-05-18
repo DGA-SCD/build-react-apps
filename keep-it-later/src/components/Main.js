@@ -2,6 +2,7 @@ import React from 'react'
 
 import { NavBar } from './NavBar'
 import { ItemHandler } from './ItemHandler'
+import { CategoryHandler } from './CategoryHandler'
 
 class Main extends React.Component {
   state = {
@@ -54,6 +55,7 @@ class Main extends React.Component {
           onAddClicked={this.onAddClicked}
           items={this.state.items}
         />
+        <CategoryHandler />
       </div>
     )
   }
