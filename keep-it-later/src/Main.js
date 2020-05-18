@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 
-function App() {
+function Main() {
   return (
     <div>
       <nav className='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
@@ -120,4 +120,4 @@ function App() {
   )
 }
 
-export default App
+export default Main
