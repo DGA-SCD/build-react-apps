@@ -1,6 +1,6 @@
 import { reducer } from './categories'
 
-describe('category reducer', () => {
+describe('categories reducer', () => {
   it('should return an initial state', () => {
     expect(reducer(undefined, {})).toEqual({ categoryId: 0 })
   })
