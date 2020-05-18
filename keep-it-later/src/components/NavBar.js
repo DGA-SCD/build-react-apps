@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 export const NavBar = ({ appName }) => {
   return (
@@ -33,4 +34,8 @@ export const NavBar = ({ appName }) => {
       </div>
     </nav>
   )
+}
+
+NavBar.propTypes = {
+  appName: PropTypes.string
 }
