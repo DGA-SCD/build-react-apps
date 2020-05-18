@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const ItemCreator = () => {
+export const ItemCreator = ({ itemUrl, onItemUrlChange }) => {
   return (
     <div className='row'>
       <div className='col-9'>
@@ -9,7 +9,8 @@ export const ItemCreator = () => {
           placeholder='What URL do you wanna keep it for later?'
           className='form-control form-control-lg'
           name='url'
-          value=''
+          value={itemUrl}
+          onChange={onItemUrlChange}
         />
       </div>
       <div className='col form-group'>

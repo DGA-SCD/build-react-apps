@@ -4,10 +4,10 @@ import { ItemCreator } from './ItemCreator'
 import { CategoryFilterBox } from './CategoryFilterBox'
 import { ItemList } from './ItemList'
 
-export const ItemHandler = () => {
+export const ItemHandler = ({ itemUrl, onItemUrlChange }) => {
   return (
     <div className='container' role='main' style={{ marginTop: '100px' }}>
-      <ItemCreator />
+      <ItemCreator itemUrl={itemUrl} onItemUrlChange={onItemUrlChange} />
       <div className='row'>
         <CategoryFilterBox />
         <ItemList />
