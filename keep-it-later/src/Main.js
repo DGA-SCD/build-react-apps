@@ -141,7 +141,7 @@ const ItemHandler = () => {
   )
 }
 
-function Main() {
+const Main = () => {
   return (
     <div>
       <NavBar />
