@@ -6,6 +6,28 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <style>
+      .itXtRo {
+        display: inline-block;
+        margin: 0.25em;
+        padding: 0.5em 1em;
+        border: 1px solid #343a40;
+        border-radius: 0.25em;
+      }
+      .itXtRo:hover {
+        color: red;
+        border: 1px solid red;
+        content: 'Remove';
+        cursor: pointer;
+      }
+      .itXtRo:hover::after {
+        padding-left: 0.7em;
+        content: '🅧';
+      }
+      .fqbaKa {
+        padding: 0;
+      }
+    </style>
   </head>
 
   <body>
@@ -50,8 +72,7 @@
               class="form-control form-control-lg custom-select"
               id="category"
               style="height: 45px;"
-              ><option value="Choose category" disabled=""
-                >Choose category</option
+              ><option value="Choose category" disabled="">Choose category</option
               ><option value="1">Knowledge</option
               ><option value="2">Personal</option
               ><option value="3">Lame Stuff</option></select
@@ -65,20 +86,11 @@
           <div class="col-3">
             <div class="list-group">
               <button type="button" class="list-group-item">Categories</button
-              ><button
-                type="button"
-                class="list-group-item list-group-item-action"
-              >
+              ><button type="button" class="list-group-item list-group-item-action">
                 Knowledge</button
-              ><button
-                type="button"
-                class="list-group-item list-group-item-action"
-              >
+              ><button type="button" class="list-group-item list-group-item-action">
                 Personal</button
-              ><button
-                type="button"
-                class="list-group-item list-group-item-action"
-              >
+              ><button type="button" class="list-group-item list-group-item-action">
                 Lame Stuff
               </button>
             </div>
@@ -114,6 +126,30 @@
                 <button class="btn btn-danger">Remove</button>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="container" role="main" style="margin-top: 100px;">
+        <div class="row">
+          <div class="col-8">
+            <input
+              type="text"
+              placeholder="Plase enter a new category"
+              class="form-control form-control-lg"
+              name="task"
+              value=""
+            />
+          </div>
+          <div class="col">
+            <button type="button" class="btn btn-success btn-lg">Add</button>
+          </div>
+        </div>
+        <div class="row" style="margin-top: 20px;">
+          <div class="col">
+            <ul class="sc-AxirZ fqbaKa">
+              <li class="sc-AxjAm itXtRo">Personal</li>
+              <li class="sc-AxjAm itXtRo">Knowledge</li>
+            </ul>
           </div>
         </div>
       </div>
