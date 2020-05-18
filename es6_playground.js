@@ -47,3 +47,16 @@ console.log(nickname)
 console.log(fullname)
 console.log(person.nickname)
 console.log(person.fullname)
+
+// higher order function
+// function ที่รับ function เป็น argument หรือ function ที่ return function
+const add = (number1, number2) => {
+  return number1 + number2
+}
+add(2, 1)
+add(3, 1)
+add(4, 1)
+const add1 = (number) => {
+  return add(number, 1)
+}
+console.log(add1(3))
