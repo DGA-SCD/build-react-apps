@@ -1,6 +1,12 @@
 import React from 'react'
 
-export const ItemCreator = ({ itemUrl, onItemUrlChange, category, onCategoryChange }) => {
+export const ItemCreator = ({
+  itemUrl,
+  onItemUrlChange,
+  category,
+  onCategoryChange,
+  onAddClicked
+}) => {
   return (
     <div className='row'>
       <div className='col-9'>
@@ -19,23 +25,18 @@ export const ItemCreator = ({ itemUrl, onItemUrlChange, category, onCategoryChan
           id='category'
           style={{ height: '45px' }}
           onChange={onCategoryChange}
+          value={category}
         >
           <option value='Choose category' disabled=''>
             Choose category
           </option>
-          <option value='Knowledge' selected={category === 'Knowledge'}>
-            Knowledge
-          </option>
-          <option value='Personal' selected={category === 'Personal'}>
-            Personal
-          </option>
-          <option value='Lame Stuff' selected={category === 'Lame Stuff'}>
-            Lame Stuff
-          </option>
+          <option value='Knowledge'>Knowledge</option>
+          <option value='Personal'>Personal</option>
+          <option value='Lame Stuff'>Lame Stuff</option>
         </select>
       </div>
       <div className='col'>
-        <button type='button' className='btn btn-success btn-lg'>
+        <button type='button' className='btn btn-success btn-lg' onClick={onAddClicked}>
           Add
         </button>
       </div>

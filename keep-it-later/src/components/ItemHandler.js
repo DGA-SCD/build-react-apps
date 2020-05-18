@@ -4,7 +4,14 @@ import { ItemCreator } from './ItemCreator'
 import { CategoryFilterBox } from './CategoryFilterBox'
 import { ItemList } from './ItemList'
 
-export const ItemHandler = ({ itemUrl, onItemUrlChange, category, onCategoryChange }) => {
+export const ItemHandler = ({
+  itemUrl,
+  onItemUrlChange,
+  category,
+  onCategoryChange,
+  onAddClicked,
+  items
+}) => {
   return (
     <div className='container' role='main' style={{ marginTop: '100px' }}>
       <ItemCreator
@@ -12,10 +19,11 @@ export const ItemHandler = ({ itemUrl, onItemUrlChange, category, onCategoryChan
         onItemUrlChange={onItemUrlChange}
         category={category}
         onCategoryChange={onCategoryChange}
+        onAddClicked={onAddClicked}
       />
       <div className='row'>
         <CategoryFilterBox />
-        <ItemList />
+        <ItemList items={items} />
       </div>
     </div>
   )
