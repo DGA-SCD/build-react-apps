@@ -47,12 +47,13 @@ class Main extends React.Component {
     //   this.setState({ items: response.data })
     // })
     // .catch(error=>..)
-    try {
-      const response = await axios.get('http://localhost:8000/items')
-      this.setState({ items: response.data })
-    } catch (error) {
-      console.error(error)
-    }
+
+    // try {
+    //   const response = await axios.get('http://localhost:8000/items')
+    //   this.setState({ items: response.data })
+    // } catch (error) {
+    //   console.error(error)
+    // }
   }
 
   // componentDidUpdate() {

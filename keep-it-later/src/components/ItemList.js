@@ -1,10 +1,11 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export const ItemList = ({ items }) => {
-  console.log(items)
+export const ItemList = ({ allItems }) => {
+  console.log(allItems)
   return (
     <div className='col'>
-      {items.map((item, id) => {
+      {allItems.map((item, id) => {
         return (
           <div
             // pitfall: key={id}
@@ -26,3 +27,11 @@ export const ItemList = ({ items }) => {
     </div>
   )
 }
+
+const mapStateToProps = (state) => {
+  return {
+    allItems: state.allItems
+  }
+}
+
+export const ConnectedItemList = connect(mapStateToProps, null)(ItemList)

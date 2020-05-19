@@ -1,11 +1,15 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import { addItem } from '../store/reducer'
 
 export const ItemCreator = ({
   url,
   onItemUrlChange,
   category_name,
   onCategoryChange,
-  onAddClicked
+  onAddClicked,
+  addItemMapped
 }) => {
   return (
     <div className='row'>
@@ -36,10 +40,44 @@ export const ItemCreator = ({
         </select>
       </div>
       <div className='col'>
-        <button type='button' className='btn btn-success btn-lg' onClick={onAddClicked}>
+        <button
+          type='button'
+          className='btn btn-success btn-lg'
+          onClick={() => addItemMapped({ url: url, category_name: category_name })}
+        >
           Add
         </button>
       </div>
     </div>
   )
 }
+
+// state = {
+//   url: '',
+//   category_name: '',
+// }
+
+// const mapStateToProps = (state) => {
+//   return {
+//     abc: state.abc
+//   }
+// }
+
+const mapDispatchToProps = {
+  addItemMapped: addItem
+}
+
+// export const ConnectedItemCreator = connect(mapStateToProps, mapDispatchToProps)(ItemCreator)
+
+const c = connect(null, mapDispatchToProps)
+export const ConnectedItemCreator = c(ItemCreator)
+
+// function add(a, b) {
+//   return a + b
+// }
+
+// function add3(a) {
+//   return add(a, 3)
+// }
+
+// add3(5) // 8

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { ItemCreator } from './ItemCreator'
+import { ConnectedItemCreator } from './ItemCreator'
 import { CategoryFilterBox } from './CategoryFilterBox'
-import { ItemList } from './ItemList'
+import { ConnectedItemList } from './ItemList'
 
 export const ItemHandler = ({
   url,
@@ -14,7 +14,7 @@ export const ItemHandler = ({
 }) => {
   return (
     <div className='container' role='main' style={{ marginTop: '100px' }}>
-      <ItemCreator
+      <ConnectedItemCreator
         url={url}
         onItemUrlChange={onItemUrlChange}
         category_name={category_name}
@@ -23,7 +23,7 @@ export const ItemHandler = ({
       />
       <div className='row'>
         <CategoryFilterBox />
-        <ItemList items={items} />
+        <ConnectedItemList />
       </div>
     </div>
   )
