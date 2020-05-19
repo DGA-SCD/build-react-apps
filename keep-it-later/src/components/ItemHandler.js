@@ -5,9 +5,9 @@ import { CategoryFilterBox } from './CategoryFilterBox'
 import { ItemList } from './ItemList'
 
 export const ItemHandler = ({
-  itemUrl,
+  url,
   onItemUrlChange,
-  category,
+  category_name,
   onCategoryChange,
   onAddClicked,
   items
@@ -15,9 +15,9 @@ export const ItemHandler = ({
   return (
     <div className='container' role='main' style={{ marginTop: '100px' }}>
       <ItemCreator
-        itemUrl={itemUrl}
+        url={url}
         onItemUrlChange={onItemUrlChange}
-        category={category}
+        category_name={category_name}
         onCategoryChange={onCategoryChange}
         onAddClicked={onAddClicked}
       />

@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 import { NavBar } from './NavBar'
 import { ItemHandler } from './ItemHandler'
@@ -6,51 +7,67 @@ import { CategoryHandler } from './CategoryHandler'
 
 class Main extends React.Component {
   state = {
-    itemUrl: '',
-    category: '',
+    url: '',
+    category_name: '',
     items: [] // [{ itemUrl: 'www.google.com', category: 'Knowledge'}, { itemUrl: ..., category: ... }]
   }
 
   onItemUrlChange = (event) => {
-    this.setState({ itemUrl: event.target.value })
+    this.setState({ url: event.target.value })
   }
 
   onCategoryChange = (event) => {
-    this.setState({ category: event.target.value })
+    this.setState({ category_name: event.target.value })
   }
 
   onAddClicked = () => {
     const newItem = {
-      itemUrl: this.state.itemUrl,
-      category: this.state.category
+      url: this.state.url,
+      category_name: this.state.category_name
     }
 
     const newItems = this.state.items.concat(newItem)
     this.setState({ items: newItems })
   }
 
-  shouldComponentUpdate() {
-    console.log('should component update')
-    return true
-  }
+  // shouldComponentUpdate() {
+  //   console.log('should component update')
+  //   return true
+  // }
 
-  componentDidMount() {
+  // getItems = async () => {
+  //   const response = await axios.get('http://localhost:8000/items')
+  //   return response
+  // }
+
+  async componentDidMount() {
     console.log('component did mount')
+    // axios.get('http://localhost:8000/items').then((response) => {
+    //   console.log(response)
+    //   this.setState({ items: response.data })
+    // })
+    // .catch(error=>..)
+    try {
+      const response = await axios.get('http://localhost:8000/items')
+      this.setState({ items: response.data })
+    } catch (error) {
+      console.error(error)
+    }
   }
 
-  componentDidUpdate() {
-    console.log('component did update')
-  }
+  // componentDidUpdate() {
+  //   console.log('component did update')
+  // }
 
   render() {
-    console.log('render')
+    //console.log('render')
     return (
       <div>
         <NavBar appName='Keep it later!!!!' />
         <ItemHandler
-          itemUrl={this.state.itemUrl}
+          url={this.state.url}
           onItemUrlChange={this.onItemUrlChange}
-          category={this.state.category}
+          category_name={this.state.category_name}
           onCategoryChange={this.onCategoryChange}
           onAddClicked={this.onAddClicked}
           items={this.state.items}

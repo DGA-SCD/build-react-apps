@@ -1,9 +1,9 @@
 import React from 'react'
 
 export const ItemCreator = ({
-  itemUrl,
+  url,
   onItemUrlChange,
-  category,
+  category_name,
   onCategoryChange,
   onAddClicked
 }) => {
@@ -15,7 +15,7 @@ export const ItemCreator = ({
           placeholder='What URL do you wanna keep it for later?'
           className='form-control form-control-lg'
           name='url'
-          value={itemUrl}
+          value={url}
           onChange={onItemUrlChange}
         />
       </div>
@@ -25,7 +25,7 @@ export const ItemCreator = ({
           id='category'
           style={{ height: '45px' }}
           onChange={onCategoryChange}
-          value={category}
+          value={category_name}
         >
           <option value='Choose category' disabled=''>
             Choose category
