@@ -7,7 +7,7 @@ export const ItemList = ({ items }) => {
       {items.map((item, id) => {
         return (
           <div
-            // pitfull: key={id}
+            // pitfall: key={id}
             key={item.id}
             className='row m-2 py-2 border-bottom border-gray align-items-center d-flex justify-content-between'
           >
