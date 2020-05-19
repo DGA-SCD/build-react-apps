@@ -31,24 +31,22 @@ export const fetchItemsSuccess = createAction('FETCH_ITEMS_SUCCESS')
 export const fetchItems = (categoryId) => {
   return (dispatch) => {
     dispatch(fetchItemsPending())
-    setTimeout(() => {
-      let url = '/items'
-      if (categoryId) {
-        url = `${url}?category=${categoryId}`
-      }
-      axios.get(url).then((response) => {
-        const itemsFromAPI = response.data
-        const allItems = itemsFromAPI.map((item) => {
-          return {
-            id: item.id,
-            textInput: item.url,
-            categoryId: item.category_id,
-            categoryName: item.category_name
-          }
-        })
-        dispatch(fetchItemsSuccess(allItems))
+    let url = '/items'
+    if (categoryId) {
+      url = `${url}?category=${categoryId}`
+    }
+    return axios.get(url).then((response) => {
+      const itemsFromAPI = response.data
+      const allItems = itemsFromAPI.map((item) => {
+        return {
+          id: item.id,
+          textInput: item.url,
+          categoryId: item.category_id,
+          categoryName: item.category_name
+        }
       })
-    }, 500)
+      dispatch(fetchItemsSuccess(allItems))
+    })
   }
 }
 
