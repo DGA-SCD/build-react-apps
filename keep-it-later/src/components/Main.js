@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 
-import { NavBar } from './NavBar'
+import { NavBarWrapper } from './NavBar'
 import { ItemHandler } from './ItemHandler'
 import { CategoryHandler } from './CategoryHandler'
 
@@ -64,7 +64,7 @@ class Main extends React.Component {
     //console.log('render')
     return (
       <div>
-        <NavBar appName='Keep it later!!!!' />
+        <NavBarWrapper appName='Keep it later!!!!' />
         <ItemHandler
           url={this.state.url}
           onItemUrlChange={this.onItemUrlChange}
@@ -73,7 +73,6 @@ class Main extends React.Component {
           onAddClicked={this.onAddClicked}
           items={this.state.items}
         />
-        <CategoryHandler />
       </div>
     )
   }

@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Link, withRouter } from 'react-router-dom'
 
-export const NavBar = ({ appName }) => {
+const NavBar = ({ appName, location }) => {
+  console.log(location.pathname)
   return (
     <nav className='navbar navbar-expand-md navbar-dark fixed-top bg-dark'>
-      <a className='navbar-brand' href='index.html'>
+      <Link className='navbar-brand' to='/'>
         {appName}
-      </a>
+      </Link>
       <button
         className='navbar-toggler'
         type='button'
@@ -20,15 +22,15 @@ export const NavBar = ({ appName }) => {
       </button>
       <div className='collapse navbar-collapse' id='navbarCollapse'>
         <ul className='navbar-nav mr-auto'>
-          <li className='nav-item active'>
-            <a className='nav-link' href='index.html'>
+          <li className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}>
+            <Link className='nav-link' to='/'>
               Home
-            </a>
+            </Link>
           </li>
-          <li className='nav-item false'>
-            <a className='nav-link' href='categories.html'>
+          <li className={`nav-item ${location.pathname === '/categories' ? 'active' : ''}`}>
+            <Link className='nav-link' to='/categories'>
               Categories
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -39,3 +41,5 @@ export const NavBar = ({ appName }) => {
 NavBar.propTypes = {
   appName: PropTypes.string
 }
+
+export const NavBarWrapper = withRouter(NavBar)

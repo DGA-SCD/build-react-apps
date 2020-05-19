@@ -3,17 +3,28 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import Main from './components/Main'
 import * as serviceWorker from './serviceWorker'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import { Provider } from 'react-redux'
 import { reducer } from './store/reducer'
 import { configureStore } from '@reduxjs/toolkit'
+import { Categories } from './components/Categories'
 
 const store = configureStore({ reducer: reducer })
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Main />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/'>
+            <Main />
+          </Route>
+          <Route path='/categories'>
+            <Categories />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
