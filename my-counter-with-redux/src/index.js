@@ -10,7 +10,13 @@ const initialState = {
   counter: 0
 }
 
-const reducer = createReducer(initialState, {})
+const reducer = createReducer(initialState, {
+  INC: (state, action) => {
+    return {
+      counter: state.counter + 1
+    }
+  }
+})
 
 const store = configureStore({
   reducer: reducer
