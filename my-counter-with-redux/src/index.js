@@ -15,6 +15,11 @@ const reducer = createReducer(initialState, {
     return {
       counter: state.counter + 1
     }
+  },
+  DEC: (state, action) => {
+    return {
+      counter: state.counter - 1
+    }
   }
 })
 

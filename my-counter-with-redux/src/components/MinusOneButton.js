@@ -1,9 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-export const MinusOneButton = () => {
+import { decrement } from '../actions'
+
+const MinusOneButton = (props) => {
   return (
-    <button type='button' class='btn btn-outline-info'>
+    <button type='button' class='btn btn-outline-info' onClick={props.decrement}>
       -1
     </button>
   )
 }
+
+const mapDispatchToProps = {
+  decrement
+}
+
+export const ConnectedMinusOneButton = connect(null, mapDispatchToProps)(MinusOneButton)

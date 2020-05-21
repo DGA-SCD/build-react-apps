@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ConnectedNumberLeft } from './NumberLeft'
 import { ConnectedPlusOneButton } from './PlusOneButton'
-import { MinusOneButton } from './MinusOneButton'
+import { ConnectedMinusOneButton } from './MinusOneButton'
 
 export const CounterLeft = () => {
   return (
@@ -10,7 +10,7 @@ export const CounterLeft = () => {
       <ConnectedNumberLeft />
       <div>
         <ConnectedPlusOneButton />
-        <MinusOneButton />
+        <ConnectedMinusOneButton />
       </div>
     </div>
   )
