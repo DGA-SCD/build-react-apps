@@ -11,7 +11,7 @@ const initialState = {
 
 const reducer = createReducer(initialState, {})
 
-const increment = createAction('INC')
+export const increment = createAction('INC')
 
 const store = configureStore({
   reducer: reducer
