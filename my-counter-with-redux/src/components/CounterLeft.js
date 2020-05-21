@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { NumberLeft } from './NumberLeft'
-import { PlusOneButton } from './PlusOneButton'
+import { ConnectedPlusOneButton } from './PlusOneButton'
 import { MinusOneButton } from './MinusOneButton'
 
 export const CounterLeft = () => {
@@ -9,7 +9,7 @@ export const CounterLeft = () => {
     <div class='col'>
       <NumberLeft />
       <div>
-        <PlusOneButton />
+        <ConnectedPlusOneButton />
         <MinusOneButton />
       </div>
     </div>

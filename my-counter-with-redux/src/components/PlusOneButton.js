@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 
 import { increment } from '../index'
 
-export const PlusOneButton = () => {
+const PlusOneButton = (props) => {
   return (
-    <button type='button' class='btn btn-outline-info mr-1'>
+    <button type='button' class='btn btn-outline-info mr-1' onClick={props.increment}>
       +1
     </button>
   )
@@ -15,4 +15,4 @@ const mapDispatchToProps = {
   increment
 }
 
-connect(null, mapDispatchToProps)(PlusOneButton)
+export const ConnectedPlusOneButton = connect(null, mapDispatchToProps)(PlusOneButton)
