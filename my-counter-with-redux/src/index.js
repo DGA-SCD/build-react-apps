@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { configureStore, createReducer, createAction } from '@reduxjs/toolkit'
+import { configureStore, createReducer } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 
 import App from './components/App'
@@ -11,8 +11,6 @@ const initialState = {
 }
 
 const reducer = createReducer(initialState, {})
-
-export const increment = createAction('INC')
 
 const store = configureStore({
   reducer: reducer
