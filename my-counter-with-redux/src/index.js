@@ -1,8 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { configureStore, createReducer } from '@reduxjs/toolkit'
 
 import App from './components/App'
 import * as serviceWorker from './serviceWorker'
+
+const initialState = {
+  counter: 0
+}
+
+const reducer = createReducer(initialState, {})
+
+const store = configureStore({
+  reducer: reducer
+})
 
 ReactDOM.render(
   <React.StrictMode>
