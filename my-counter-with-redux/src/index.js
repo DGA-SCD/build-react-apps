@@ -13,12 +13,12 @@ const initialState = {
 const reducer = createReducer(initialState, {
   INC: (state, action) => {
     return {
-      counter: state.counter + 1
+      counter: state.counter + action.payload
     }
   },
   DEC: (state, action) => {
     return {
-      counter: state.counter - 1
+      counter: state.counter - action.payload
     }
   }
 })

@@ -5,7 +5,7 @@ import { increment } from '../actions'
 
 const PlusOneButton = (props) => {
   return (
-    <button type='button' class='btn btn-outline-info mr-1' onClick={props.increment}>
+    <button type='button' class='btn btn-outline-info mr-1' onClick={() => props.increment(1)}>
       +1
     </button>
   )

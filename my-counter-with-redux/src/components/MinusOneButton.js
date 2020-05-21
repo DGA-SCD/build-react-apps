@@ -5,7 +5,7 @@ import { decrement } from '../actions'
 
 const MinusOneButton = (props) => {
   return (
-    <button type='button' class='btn btn-outline-info' onClick={props.decrement}>
+    <button type='button' class='btn btn-outline-info' onClick={() => props.decrement(1)}>
       -1
     </button>
   )
