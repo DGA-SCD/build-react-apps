@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { configureStore, createReducer } from '@reduxjs/toolkit'
+import { configureStore, createReducer, createAction } from '@reduxjs/toolkit'
 
 import App from './components/App'
 import * as serviceWorker from './serviceWorker'
@@ -10,6 +10,8 @@ const initialState = {
 }
 
 const reducer = createReducer(initialState, {})
+
+const increment = createAction('INC')
 
 const store = configureStore({
   reducer: reducer
