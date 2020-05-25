@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import { reducer } from './store/reducer'
 import { configureStore } from '@reduxjs/toolkit'
 import { Categories } from './components/Categories'
+import { CategoryContextProvider } from './contexts'
 
 const store = configureStore({
   reducer: reducer,
@@ -20,14 +21,16 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
-        <Switch>
-          <Route exact path='/'>
-            <Main />
-          </Route>
-          <Route path='/categories'>
-            <Categories />
-          </Route>
-        </Switch>
+        <CategoryContextProvider>
+          <Switch>
+            <Route exact path='/'>
+              <Main />
+            </Route>
+            <Route path='/categories'>
+              <Categories />
+            </Route>
+          </Switch>
+        </CategoryContextProvider>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

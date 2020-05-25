@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import '../category.css'
+
+import { CategoryContext } from '../contexts'
 
 const StyledCategoryItem = styled.li`
   display: inline-block;
@@ -23,13 +25,14 @@ const StyledCategoryItem = styled.li`
 `
 
 export const CategoryList = () => {
+  const { categories } = useContext(CategoryContext)
   return (
     <div class='row' style={{ marginTop: '20px' }}>
       <div class='col'>
         <ul class=''>
-          <StyledCategoryItem>Personal</StyledCategoryItem>
-          <StyledCategoryItem>Knowledge</StyledCategoryItem>
-          <StyledCategoryItem>Entertainment</StyledCategoryItem>
+          {categories.map((category) => {
+            return <StyledCategoryItem key={category.id}>{category.name}</StyledCategoryItem>
+          })}
         </ul>
       </div>
     </div>

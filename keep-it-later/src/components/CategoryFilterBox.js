@@ -1,21 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import { CategoryContext } from '../contexts'
 
 export const CategoryFilterBox = () => {
+  const { categories } = useContext(CategoryContext)
   return (
     <div className='col-3'>
       <div className='list-group'>
         <button type='button' className='list-group-item'>
           Categories
         </button>
-        <button type='button' className='list-group-item list-group-item-action'>
-          Knowledge
-        </button>
-        <button type='button' className='list-group-item list-group-item-action'>
-          Personal
-        </button>
-        <button type='button' className='list-group-item list-group-item-action'>
-          Lame Stuff
-        </button>
+
+        {categories.map((category) => {
+          return (
+            <button
+              type='button'
+              className='list-group-item list-group-item-action'
+              key={category.id}
+            >
+              {category.name}
+            </button>
+          )
+        })}
       </div>
     </div>
   )

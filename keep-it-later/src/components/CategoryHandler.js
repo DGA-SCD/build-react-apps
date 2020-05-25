@@ -1,25 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react'
 
 import { CategoryCreator } from './CategoryCreator'
 import { CategoryList } from './CategoryList'
-
-// define custom hook
-const useCategories = () => {
-  const [categories, setCategories] = useState([])
-
-  useEffect(() => {
-    const fetchCategories = async () => {
-      const response = await axios.get('http://localhost:8000/categories')
-      console.log(response)
-      setCategories(response.data)
-    }
-
-    fetchCategories()
-  }, [])
-
-  return [categories, setCategories]
-}
+import { useCategories } from '../hooks' // or ../hooks/index
 
 export const CategoryHandler = () => {
   // state = {
