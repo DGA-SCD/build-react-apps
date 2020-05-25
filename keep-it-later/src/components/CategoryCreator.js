@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CategoryCreator = () => {
+export const CategoryCreator = ({ category, onCategoryTextChange }) => {
   return (
     <div class='row'>
       <div class='col-8'>
@@ -9,7 +9,8 @@ export const CategoryCreator = () => {
           placeholder='Plase enter a new category'
           class='form-control form-control-lg'
           name='task'
-          value=''
+          value={category}
+          onChange={onCategoryTextChange}
         />
       </div>
       <div class='col'>
