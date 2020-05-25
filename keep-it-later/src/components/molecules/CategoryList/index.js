@@ -1,8 +1,5 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import '../../category.css'
-
-import { CategoryContext } from '../../contexts'
 
 const StyledCategoryItem = styled.li`
   display: inline-block;
@@ -24,8 +21,7 @@ const StyledCategoryItem = styled.li`
   }
 `
 
-export const CategoryList = () => {
-  const { categories } = useContext(CategoryContext)
+export const CategoryListPresentation = ({ categories }) => {
   return (
     <div class='row' style={{ marginTop: '20px' }}>
       <div class='col'>

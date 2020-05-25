@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { CategoryCreator } from '../molecules/CategoryCreator'
-import { CategoryList } from '../molecules/CategoryList'
+import { CategoryList } from '../molecules/CategoryList/container'
 import { useCategories } from '../../hooks' // or ../hooks/index
 
 export const CategoryHandler = () => {
