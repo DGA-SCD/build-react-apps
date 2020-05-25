@@ -9,15 +9,22 @@ export class CategoryHandler extends React.Component {
     categories: []
   }
 
-  onCategoryTextChange = (event) => {
+  onCategoryTextChanged = (event) => {
     this.setState({ category: event.target.value })
   }
+
+  onAddClicked = () => {
+    const newCategories = [...this.state.categories, this.state.category]
+    this.setState({ categories: newCategories })
+  }
+
   render() {
     return (
       <div class='container' role='main' style={{ marginTop: '100px' }}>
         <CategoryCreator
           category={this.state.category}
-          onCategoryTextChange={this.onCategoryTextChange}
+          onCategoryTextChanged={this.onCategoryTextChanged}
+          onAddClicked={this.onAddClicked}
         />
         <CategoryList />
       </div>

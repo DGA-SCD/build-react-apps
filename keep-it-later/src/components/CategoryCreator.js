@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CategoryCreator = ({ category, onCategoryTextChange }) => {
+export const CategoryCreator = ({ category, onCategoryTextChanged, onAddClicked }) => {
   return (
     <div class='row'>
       <div class='col-8'>
@@ -10,11 +10,11 @@ export const CategoryCreator = ({ category, onCategoryTextChange }) => {
           class='form-control form-control-lg'
           name='task'
           value={category}
-          onChange={onCategoryTextChange}
+          onChange={onCategoryTextChanged}
         />
       </div>
       <div class='col'>
-        <button type='button' class='btn btn-success btn-lg'>
+        <button type='button' class='btn btn-success btn-lg' onClick={onAddClicked}>
           Add
         </button>
       </div>
