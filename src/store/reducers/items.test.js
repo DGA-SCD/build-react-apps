@@ -87,6 +87,8 @@ describe('items reducer', () => {
     const store = mockStore({ todos: [] })
     return store.dispatch(fetchItems()).then(() => {
       expect(store.getActions()).toEqual(expectedActions)
+
+      expect(axios.get).toHaveBeenCalledWith('/items')
     })
   })
 })
