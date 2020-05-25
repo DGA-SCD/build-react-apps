@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import { CategoryCreator } from './CategoryCreator'
-import { CategoryList } from './CategoryList'
-import { useCategories } from '../hooks' // or ../hooks/index
+import { CategoryCreator } from '../molecules/CategoryCreator'
+import { CategoryList } from '../molecules/CategoryList'
+import { useCategories } from '../../hooks' // or ../hooks/index
 
 export const CategoryHandler = () => {
   // state = {

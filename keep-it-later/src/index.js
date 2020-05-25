@@ -9,7 +9,7 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { reducer } from './store/reducer'
 import { configureStore } from '@reduxjs/toolkit'
-import { Categories } from './components/Categories'
+import { Categories } from './components/pages/Categories'
 import { CategoryContextProvider } from './contexts'
 
 const store = configureStore({

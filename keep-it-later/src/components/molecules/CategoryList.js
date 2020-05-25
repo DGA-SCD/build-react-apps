@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import '../category.css'
+import '../../category.css'
 
-import { CategoryContext } from '../contexts'
+import { CategoryContext } from '../../contexts'
 
 const StyledCategoryItem = styled.li`
   display: inline-block;

@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import { NavBarWrapper } from './NavBar'
 import { ItemHandler } from './ItemHandler'
-import { CategoryHandler } from './CategoryHandler'
+import { CategoryHandler } from './organisms/CategoryHandler'
 
 class Main extends React.Component {
   state = {
