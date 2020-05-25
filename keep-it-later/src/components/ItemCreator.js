@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addItem } from '../store/action'
+import { addItemViaAPI } from '../store/action'
 
 export const ItemCreator = ({
   url,
@@ -9,7 +9,7 @@ export const ItemCreator = ({
   category_name,
   onCategoryChange,
   onAddClicked,
-  addItemMapped
+  addItemViaAPIMapped
 }) => {
   return (
     <div className='row'>
@@ -43,7 +43,7 @@ export const ItemCreator = ({
         <button
           type='button'
           className='btn btn-success btn-lg'
-          onClick={() => addItemMapped({ id: url, url: url, category_name: category_name })}
+          onClick={() => addItemViaAPIMapped({ id: url, url: url, category_name: category_name })}
         >
           Add
         </button>
@@ -64,7 +64,7 @@ export const ItemCreator = ({
 // }
 
 const mapDispatchToProps = {
-  addItemMapped: addItem
+  addItemViaAPIMapped: addItemViaAPI
 }
 
 // export const ConnectedItemCreator = connect(mapStateToProps, mapDispatchToProps)(ItemCreator)
