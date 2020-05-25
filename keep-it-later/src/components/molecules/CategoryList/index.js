@@ -27,7 +27,11 @@ export const CategoryListPresentation = ({ categories }) => {
       <div class='col'>
         <ul class=''>
           {categories.map((category) => {
-            return <StyledCategoryItem key={category.id}>{category.name}</StyledCategoryItem>
+            return (
+              <StyledCategoryItem data-testid='categoryItem' key={category.id}>
+                {category.name}
+              </StyledCategoryItem>
+            )
           })}
         </ul>
       </div>
