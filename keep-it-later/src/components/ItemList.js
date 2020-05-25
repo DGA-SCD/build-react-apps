@@ -1,7 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-export const ItemList = ({ allItems }) => {
+import { deleteItem } from '../store/action'
+
+export const ItemList = ({ allItems, deleteItemMapped }) => {
   console.log(allItems)
   return (
     <div className='col'>
@@ -19,7 +21,9 @@ export const ItemList = ({ allItems }) => {
               <span className='ml-2 badge badge-info'>{item.category_name}</span>
             </div>
             <div className='col'>
-              <button className='btn btn-danger'>Remove</button>
+              <button className='btn btn-danger' onClick={() => deleteItemMapped(item.id)}>
+                Remove
+              </button>
             </div>
           </div>
         )
@@ -34,4 +38,8 @@ const mapStateToProps = (state) => {
   }
 }
 
-export const ConnectedItemList = connect(mapStateToProps, null)(ItemList)
+const mapDispatchToProps = {
+  deleteItemMapped: deleteItem
+}
+
+export const ConnectedItemList = connect(mapStateToProps, mapDispatchToProps)(ItemList)

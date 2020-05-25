@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { addItem } from '../store/reducer'
+import { addItem } from '../store/action'
 
 export const ItemCreator = ({
   url,
@@ -43,7 +43,7 @@ export const ItemCreator = ({
         <button
           type='button'
           className='btn btn-success btn-lg'
-          onClick={() => addItemMapped({ url: url, category_name: category_name })}
+          onClick={() => addItemMapped({ id: url, url: url, category_name: category_name })}
         >
           Add
         </button>
