@@ -1,33 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { CategoryCreator } from './CategoryCreator'
 import { CategoryList } from './CategoryList'
 
-export class CategoryHandler extends React.Component {
-  state = {
-    category: '',
-    categories: []
+export const CategoryHandler = () => {
+  // state = {
+  //   category: '',
+  //   categories: []
+  // }
+  const [category, setCategory] = useState()
+
+  const onCategoryTextChanged = (event) => {
+    // this.setState({ category: event.target.value })
+    setCategory(event.target.value)
   }
 
-  onCategoryTextChanged = (event) => {
-    this.setState({ category: event.target.value })
+  const onAddClicked = () => {
+    // const newCategories = [...this.state.categories, this.state.category]
+    // this.setState({ categories: newCategories })
   }
 
-  onAddClicked = () => {
-    const newCategories = [...this.state.categories, this.state.category]
-    this.setState({ categories: newCategories })
-  }
-
-  render() {
-    return (
-      <div class='container' role='main' style={{ marginTop: '100px' }}>
-        <CategoryCreator
-          category={this.state.category}
-          onCategoryTextChanged={this.onCategoryTextChanged}
-          onAddClicked={this.onAddClicked}
-        />
-        <CategoryList />
-      </div>
-    )
-  }
+  return (
+    <div class='container' role='main' style={{ marginTop: '100px' }}>
+      <CategoryCreator
+        category={category}
+        onCategoryTextChanged={onCategoryTextChanged}
+        onAddClicked={onAddClicked}
+      />
+      <CategoryList />
+    </div>
+  )
 }
