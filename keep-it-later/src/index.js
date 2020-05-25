@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
-import Main from './components/Main'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import thunk from 'redux-thunk'
@@ -9,8 +8,12 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import { reducer } from './store/reducer'
 import { configureStore } from '@reduxjs/toolkit'
-import { Categories } from './components/pages/Categories'
 import { CategoryContextProvider } from './contexts'
+
+// import Main from './components/Main'
+// import { Categories } from './components/pages/Categories'
+const Main = React.lazy(() => import('./components/Main'))
+const Categories = React.lazy(() => import('./components/pages/Categories'))
 
 const store = configureStore({
   reducer: reducer,
@@ -24,10 +27,14 @@ ReactDOM.render(
         <CategoryContextProvider>
           <Switch>
             <Route exact path='/'>
-              <Main />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Main />
+              </Suspense>
             </Route>
             <Route path='/categories'>
-              <Categories />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Categories />
+              </Suspense>
             </Route>
           </Switch>
         </CategoryContextProvider>
