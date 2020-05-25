@@ -4,13 +4,17 @@ import './index.css'
 import Main from './components/Main'
 import * as serviceWorker from './serviceWorker'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import thunk from 'redux-thunk'
 
 import { Provider } from 'react-redux'
 import { reducer } from './store/reducer'
 import { configureStore } from '@reduxjs/toolkit'
 import { Categories } from './components/Categories'
 
-const store = configureStore({ reducer: reducer })
+const store = configureStore({
+  reducer: reducer,
+  middleware: [thunk]
+})
 
 ReactDOM.render(
   <React.StrictMode>

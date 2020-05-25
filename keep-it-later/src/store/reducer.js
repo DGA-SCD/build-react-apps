@@ -16,5 +16,10 @@ export const reducer = createReducer(initialState, {
         return item.id != action.payload
       })
     }
+  },
+  FETCH_ITEMS: (state, action) => {
+    return {
+      allItems: action.payload
+    }
   }
 })
