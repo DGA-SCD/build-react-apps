@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { CategoryInput } from '../atoms/CategoryInput'
+import { CategoryAddButton } from '../atoms/CategoryAddButton'
 
 export const CategoryCreator = ({ category, onCategoryTextChanged, onAddClicked }) => {
   return (
@@ -9,9 +10,7 @@ export const CategoryCreator = ({ category, onCategoryTextChanged, onAddClicked 
         <CategoryInput category={category} onCategoryTextChanged={onCategoryTextChanged} />
       </div>
       <div class='col'>
-        <button type='button' class='btn btn-success btn-lg' onClick={onAddClicked}>
-          Add
-        </button>
+        <CategoryAddButton onAddClicked={onAddClicked} />
       </div>
     </div>
   )
